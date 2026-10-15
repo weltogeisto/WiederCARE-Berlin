@@ -22,7 +22,7 @@ This supersedes the earlier walking-game/archival comparison QA. `PLAN.md` stays
 - Desktop direct hash link selects the intended proposal without overflow.
 - An explicitly mocked GitHub API outage produces an unavailable state, not fabricated zero votes; the public support link remains usable. Reduced-motion interaction works.
 - No uncaught page errors or mutation/upload requests in the primary interaction smoke.
-- New UI was visually inspected. Existing local-draft CRUD/export/delete and real map rendering were exercised in the earlier supporting-component smoke; current primary-page integration receives additional release checks.
+- New UI was visually inspected. Context-only map shows all three locations without walking controls; selecting a marker updates both proposal and deep link. Local-draft dialog opens and closes with Escape. Existing local-draft CRUD/export/delete were exercised in the earlier supporting-component smoke.
 
 ## Reproduce
 

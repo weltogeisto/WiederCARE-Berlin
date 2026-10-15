@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import type { Point } from "../lib/geo";
+
 import { stops } from "../lib/content";
 import type { ImageCredit, Stop } from "../lib/types";
 import FixComposer from "./FixComposer";
@@ -15,7 +15,7 @@ const MapView = dynamic(() => import("./MapView"), {
   loading: () => <div className="proposal-map-loading" role="status">Stadtplan wird geladen …</div>,
 });
 const allStopIds = new Set(stops.map(stop => stop.id));
-const contextBounds = (point: Point): Point[] => [point, point]; // Zero-length extent: MapView needs bounds, but no walking route is drawn.
+
 const ignorePoint = () => undefined;
 const inspirationUrl = "https://www.instagram.com/architekturrebellion.berlin?cplk=MTM5bWVudmg5YjBzZQ==";
 
@@ -130,8 +130,8 @@ export default function ProposalApp() {
             <div className="proposal-viewpoint"><span className="proposal-eyebrow">ORT & BLICKRICHTUNG</span><p>{selected.viewpoint}</p><button type="button" onClick={() => setMapOpen(open => !open)} aria-expanded={mapOpen} aria-controls="proposal-map-panel">{mapOpen ? "Karte schließen −" : "Ort auf der Karte ansehen +"}</button></div>
           </div>
           {mapOpen && <div className="proposal-map-panel" id="proposal-map-panel">
-            <p>Zoome etwas heraus, um alle drei Orte zu sehen. Wähle einen markierten Vorschlag, um ihn zu öffnen.</p>
-            <div className="proposal-map-canvas"><MapView point={{ lat: selected.lat, lng: selected.lng }} route={contextBounds({ lat: selected.lat, lng: selected.lng })} stops={stops} found={allStopIds} onWalk={ignorePoint} onDrag={ignorePoint} onSelect={selectProposal} follow={false} /></div>
+            <p>Alle drei Orte im Überblick. Wähle einen markierten Vorschlag, um ihn zu öffnen.</p>
+            <div className="proposal-map-canvas"><MapView contextOnly point={{ lat: selected.lat, lng: selected.lng }} route={[]} stops={stops} found={allStopIds} onWalk={ignorePoint} onDrag={ignorePoint} onSelect={selectProposal} follow={false} /></div>
             <div className="proposal-map-attribution"><a href="https://openfreemap.org/" target="_blank" rel="noreferrer">OpenFreeMap</a> · <a href="https://openmaptiles.org/" target="_blank" rel="noreferrer">© OpenMapTiles</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap</a></div>
           </div>}
 
