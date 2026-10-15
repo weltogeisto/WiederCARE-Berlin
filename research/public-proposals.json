@@ -1,0 +1,24 @@
+{
+  "repository": "weltogeisto/WiederCARE-Berlin",
+  "method": "github-issue-thumbs-up",
+  "proposals": [
+    {
+      "id": "apotheke",
+      "issueNumber": 1,
+      "issueUrl": "https://github.com/weltogeisto/WiederCARE-Berlin/issues/1",
+      "title": "Apothekenflügel zurück ins Berliner Stadtbild"
+    },
+    {
+      "id": "spreefront",
+      "issueNumber": 2,
+      "issueUrl": "https://github.com/weltogeisto/WiederCARE-Berlin/issues/2",
+      "title": "Eine historische Spreefront statt der modernen Ostfassade"
+    },
+    {
+      "id": "bauakademie",
+      "issueNumber": 3,
+      "issueUrl": "https://github.com/weltogeisto/WiederCARE-Berlin/issues/3",
+      "title": "Schinkels Bauakademie wieder sichtbar machen"
+    }
+  ]
+}

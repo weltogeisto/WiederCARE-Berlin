@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
   output: "export",
-  basePath: "/wiedersehen-berlin",
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "/WiederCARE-Berlin",
   trailingSlash: true,
   images: { unoptimized: true },
   poweredByHeader: false,

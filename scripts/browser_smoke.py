@@ -2,13 +2,13 @@
 from playwright.sync_api import sync_playwright, expect
 from pathlib import Path
 from PIL import Image
-import os, json
+import os, json, time
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / ".cache" / "qa"
 OUT.mkdir(parents=True, exist_ok=True)
-BASE = os.environ.get("BERLIN_BASE_URL", "http://127.0.0.1:4173/wiedersehen-berlin/")
+BASE = os.environ.get("BERLIN_BASE_URL", "http://127.0.0.1:4173/WiederCARE-Berlin/")
 REPORT = {"url": BASE, "checks": [], "screenshots": [], "errors": [], "external_hosts": [], "mutating_requests": []}
 def passed(name):
     REPORT["checks"].append(name)
@@ -25,8 +25,10 @@ with sync_playwright() as p:
         args=["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
         env={**os.environ, "LIBGL_ALWAYS_SOFTWARE": "1"})
     try:
-        context = browser.new_context(viewport={"width":390,"height":844}, is_mobile=True, has_touch=True)
+        recording = {"record_video_dir": str(OUT / "recordings"), "record_video_size": {"width":390,"height":844}} if os.environ.get("BERLIN_RECORD") else {}
+        context = browser.new_context(viewport={"width":390,"height":844}, is_mobile=True, has_touch=True, **recording)
         page = context.new_page()
+        recording_start = time.monotonic()
         page.on("pageerror", lambda error: REPORT["errors"].append(str(error)))
         def record_request(request):
             host = urlparse(request.url).hostname
@@ -42,7 +44,9 @@ with sync_playwright() as p:
         assert page.locator(".stop-pin").count() == 0
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
         expect(page.get_by_role("button",name="Ton einschalten",exact=True)).to_have_attribute("aria-pressed","false")
+        REPORT["preview_start_seconds"] = time.monotonic() - recording_start
         screenshot(page, "mobile-start.png")
+        if recording: page.wait_for_timeout(2500)
         passed("virgin mobile: real map, 0/3, hidden pins, no modal or horizontal overflow, opt-in sound")
         if not os.environ.get("BERLIN_SMOKE_QUICK"):
             page.evaluate("""() => { window.__discoveries=[]; new MutationObserver(() => {const d=document.querySelector('dialog[open] .stop-heading h2');if(d && !window.__discoveries.includes(d.textContent))window.__discoveries.push(d.textContent)}).observe(document.body,{subtree:true,childList:true}); }""")
@@ -63,22 +67,42 @@ with sync_playwright() as p:
             passed("one demo discovers all three stops in order and auto-resumes after every 7-second reveal")
             screenshot(page, "mobile-complete.png")
             page.locator(".collection-toggle").click()
-            page.locator(".stop-list button").first.click()
-            page.get_by_test_id("comparison").wait_for()
-            page.locator("#comparison-range").focus()
-            page.locator("#comparison-range").press("Home")
-            expect(page.locator("#comparison-range")).to_have_value("0")
-            page.locator("#comparison-range").press("ArrowRight")
-            expect(page.locator("#comparison-range")).to_have_value("1")
-            page.get_by_role("button",name="Ganzes Archivbild",exact=True).click()
-            assert page.locator(".archive-full").count() == 1
-            assert page.locator(".archive-full > img").evaluate("i=>getComputedStyle(i).objectFit") == "contain"
-            page.get_by_role("button",name="Crew-Reveal wiederholen").click()
-            page.get_by_test_id("crew-reveal").wait_for()
-            page.get_by_role("button",name="Überspringen",exact=False).click()
-            page.get_by_test_id("comparison").wait_for()
-            page.get_by_role("button",name="Schließen",exact=True).click()
-            passed("keyboard comparison, uncropped archive mode, replay and skip")
+            for index, stop_id in enumerate(["apotheke", "spreefront", "bauakademie"]):
+                page.locator(".stop-list button").nth(index).click()
+                frame = page.get_by_test_id("image-view")
+                expect(frame).to_have_attribute("data-view", "vision")
+                page.wait_for_function("document.querySelector('.vision-image')?.complete && document.querySelector('.vision-image').naturalWidth > 0")
+                assert "/media/approved/" in page.locator(".vision-image").get_attribute("src")
+                assert page.locator(".vision-image").evaluate("i=>getComputedStyle(i).objectFit") == "contain"
+                assert page.locator("input[type=range]").count() == 0
+                expect(frame).to_contain_text("KI-Rekonstruktionsvision")
+                screenshot(page, f"mobile-{stop_id}-vision.png")
+                if recording: page.wait_for_timeout(2200)
+                before_button = page.get_by_role("button",name="Standortfoto",exact=True)
+                before_button.focus(); before_button.press("Enter")
+                expect(frame).to_have_attribute("data-view", "before")
+                expect(frame).to_contain_text("Standortfoto")
+                before_src = page.locator(".vision-image").get_attribute("src")
+                if recording: page.wait_for_timeout(2200)
+                page.get_by_role("button",name="KI-Vision",exact=True).click()
+                assert page.locator(".vision-image").get_attribute("src") != before_src
+                refs = page.get_by_test_id("archive-references")
+                refs.locator("summary").click()
+                assert refs.locator("img").count() == (2 if index == 0 else 1)
+                for ref in refs.locator("img").all():
+                    ref.scroll_into_view_if_needed()
+                    expect(ref).to_be_visible()
+                    ref.evaluate("i=>i.decode()")
+                    assert ref.evaluate("i=>i.naturalWidth>0 && getComputedStyle(i).objectFit==='contain'")
+                refs.locator("summary").click()
+                page.get_by_role("button",name="Crew-Reveal wiederholen").click()
+                page.get_by_test_id("crew-reveal").wait_for()
+                assert page.locator(".reveal-after").evaluate("i=>getComputedStyle(i).clipPath") == "none"
+                page.get_by_role("button",name="Überspringen",exact=False).click()
+                expect(frame).to_have_attribute("data-view", "vision")
+                page.get_by_role("button",name="Schließen",exact=True).click()
+            REPORT["preview_end_seconds"] = time.monotonic() - recording_start
+            passed("all three approved visions, distinct keyboard-switched site photos, four archive refs, no wipe/crop, replay and skip")
             page.reload(wait_until="networkidle")
             expect(page.get_by_test_id("found-count")).to_have_text("3/3")
             passed("discovery persistence survives reload")
@@ -130,7 +154,9 @@ with sync_playwright() as p:
         page.get_by_role("button",name="Schließen",exact=True).click()
         assert REPORT["mutating_requests"] == []
         passed("photo resized to 1536px, persisted in IndexedDB, exported, deleted; no POST/PUT/upload requests")
+        video = page.video
         context.close()
+        if video: REPORT["video"] = str(video.path())
         desktop = browser.new_context(viewport={"width":1440,"height":1000})
         dp = desktop.new_page(); dp.on("pageerror",lambda error:REPORT["errors"].append(str(error)))
         dp.goto(BASE,wait_until="networkidle",timeout=45000); dp.wait_for_selector('.map-canvas[data-map-ready="true"]',timeout=45000)

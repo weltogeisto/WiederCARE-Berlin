@@ -1,0 +1,35 @@
+# Freigegebene Berlin-Rekonstruktionsvisionen: Quellen und Rechte
+
+## Umfang und Darstellung
+
+Die Freigabe betrifft die öffentliche App-Nutzung der drei gelieferten KI-Rekonstruktionsvisionen zusammen mit den jeweils zugehörigen, datierten Standortfotos. Nach der ausdrücklichen Produktkorrektur des Nutzers ist der experimentelle Links-rechts-Swipe die zentrale Vergleichsfunktion. Standortfoto und Vision sind NICHT geometrisch ausgerichtet; der Hinweis auf unterschiedliche Blickwinkel bleibt sichtbar. Die vier historischen Quellenbilder bleiben separat als Referenzen ausgewiesen und werden nicht als „Nachher“-Bilder verwendet.
+
+Die Standortfotos sind Aufnahmen vom 04.10.2021, 25.06.2023 und 07.05.2022. Sie dokumentieren nicht den heutigen Zustand (Stand 15.10.2026). Die Visionen sind KI-Interpretationen, keine Vermessungen, maßstabsgetreuen Bauentwürfe oder nachgewiesenen Ist-Zustände. Die abweichenden Kamerastandpunkte sind nicht als registriert oder passgenau ausgerichtet zu verstehen.
+
+## Verarbeitung und Manifest
+
+Alle zehn gelieferten Bilddateien wurden als WebP-Derivate mit maximal 1536 px langer Kante und weniger als 500.000 Byte gespeichert. Seitenverhältnis und vollständiger Bildausschnitt blieben erhalten; es wurde weder beschnitten noch neu gemalt. Die Originaldateien wurden nicht in das öffentliche Repository kopiert. Die Derivat-SHA-256, Quelldatei-SHA-256, Pixelmaße sowie der relative Quelldateiname stehen in [`research/approved-visions.json`](../../research/approved-visions.json). Die Transformation lässt sich lokal ohne Netzwerk über [`scripts/import-approved-visions.py`](../../scripts/import-approved-visions.py) ausführen.
+
+Quelldateinamen in der Tabelle sind relativ zum Inhalt des vom Nutzer gelieferten ZIP-Pakets. Sie enthalten keine lokalen Cache- oder privaten Dateipfade. Die Quellen-, Datums- und Lizenzangaben unten stammen aus dem mitgelieferten Manifest und der Lizenzdatei; sie wurden nicht unabhängig rechtlich oder katalogisch überprüft. Unklare/abweichende Datierungen werden ausdrücklich beibehalten.
+
+## Bildnachweise
+
+| Ansicht | Gelieferte Quelldatei (relativ) | Urheber / Credit | Datum laut Quelle | Lizenzangabe | Quelle |
+|---|---|---|---|---|---|
+| Standortfoto · Apothekenflügel | `01_Apothekenfluegel/01_Vorher_Standort_Nordostecke_Foto_2021-10-04.jpg` | Frank Liebig | 04.10.2021 | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Humboldt-Forum_(Ost%2BNord).jpg) |
+| KI-Rekonstruktionsvision · Apothekenflügel | `01_Apothekenfluegel/02_Nachher_Apothekenfluegel_KI_Rekonstruktionsvision.png` | AI adaptation after Bundesarchiv / August Rumbucher | 15.10.2026 | [CC BY-SA 3.0 DE](https://creativecommons.org/licenses/by-sa/3.0/de/); Weitergabe unter gleichen Bedingungen | [Bundesarchiv-Bilddatensatz](https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1998-014-21A,_Berlin,_Stadtschloss,_Apotheken-Fl%C3%BCgel.jpg) |
+| Historische Referenz · Apothekenflügel | `01_Apothekenfluegel/03_Referenz_Apothekenfluegel_Bundesarchiv_vor_1929.jpg` | Bundesarchiv, Bild 146-1998-014-21A / Rumbucher [junior], August | vor 1929; Commons-Metadatum: 1928 | [CC BY-SA 3.0 DE](https://creativecommons.org/licenses/by-sa/3.0/de/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1998-014-21A,_Berlin,_Stadtschloss,_Apotheken-Fl%C3%BCgel.jpg) |
+| Historische Referenz · Schlossapotheke | `01_Apothekenfluegel/04_Referenz_Schlossapotheke_Schraegansicht_Zeno.jpg` | Ludwig Walter, Berlin / Zeno.org; Druck nennt Fotograf E. Schuh | circa 1900 laut Commons; Postkartendatum unsicher | Gemeinfrei laut gelieferten Metadaten | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Berlin,_Mitte,_Berlin_-_Schlossapotheke_(Zeno_Ansichtskarten).jpg) |
+| Standortfoto · Spreefront | `02_Schloss_Ostfassade_Spree/01_Vorher_Schloss_Moderne_Ostfassade_Foto_2023-06-25.jpg` | ArildV | 25.06.2023 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Humboldt_Forum_and_Berlin_Cathedral_June_2023_01.jpg) |
+| KI-Rekonstruktionsvision · Spreefront | `02_Schloss_Ostfassade_Spree/02_Nachher_Schloss_Historische_Spreefront_KI_Rekonstruktionsvision.png` | AI adaptation after Bain News Service / Library of Congress | 15.10.2026 | Laut Liefermetadaten: zugrunde liegendes Archivbild gemeinfrei / ohne bekannte Einschränkungen. **Keine pauschale Gemeinfreiheitsbehauptung für die KI-Adaption.** | [Library of Congress-Datensatz](https://commons.wikimedia.org/wiki/File:Rear_of_Imperial_Castle,_Berlin_LCCN2014716618.jpg) |
+| Historische Referenz · Spreefront | `02_Schloss_Ostfassade_Spree/03_Referenz_Schloss_Spreefront_Library_of_Congress.jpg` | Bain News Service, Herausgeber / Library of Congress, ggbain.36469, LCCN 2014716618 | Commons nennt 1900; Bildunterschrift der Quelle ungeprüft | Gemeinfrei / keine bekannten Einschränkungen laut gelieferten Metadaten | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rear_of_Imperial_Castle,_Berlin_LCCN2014716618.jpg) |
+| Standortfoto · Bauakademie | `03_Schinkelsche_Bauakademie/01_Vorher_Bauakademie_Musterfassade_Standort_Foto_2022-05-07.jpg` | Fridolin freudenfett | 07.05.2022 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Mitte_Schinkelplatz_Bauakademie.jpg) |
+| KI-Rekonstruktionsvision · Bauakademie | `03_Schinkelsche_Bauakademie/02_Nachher_Schinkelsche_Bauakademie_KI_Rekonstruktionsvision.png` | AI adaptation after Königlich Preußische Messbildanstalt | 15.10.2026 | Laut Liefermetadaten: zugrunde liegendes Archivbild gemeinfrei. **Keine pauschale Gemeinfreiheitsbehauptung für die KI-Adaption.** | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:M_Bauakademie_Berlin_1888.jpg) |
+| Historische Referenz · Bauakademie | `03_Schinkelsche_Bauakademie/03_Referenz_Bauakademie_Historische_Messbildaufnahme.jpg` | Königlich Preußische Messbildanstalt | ungeklärt: Dateiname nennt 1888, Commons-Beschreibung datiert auf 1911 | Gemeinfrei laut gelieferten Metadaten | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:M_Bauakademie_Berlin_1888.jpg) |
+
+## Lizenz- und Änderungsvermerke
+
+- Bei CC BY-SA-Dateien sind Urheber-/Credit, Quelle, Lizenzlink und die Umwandlung/Verkleinerung als Änderung im Manifest dokumentiert. Die CC-BY-SA-Bedingungen, insbesondere Namensnennung und ShareAlike bei Weitergabe von Adaptionen, sind zu beachten.
+- Die Apothekenflügel-Vision ist laut Freigabepaket unter CC BY-SA 3.0 DE gekennzeichnet und wird mit dieser Lizenzangabe weitergereicht.
+- Für Spreefront- und Bauakademie-Vision wird nur der vom Paket behauptete Status des jeweiligen zugrunde liegenden Archivbildes genannt. Es wird **keine neue pauschale Gemeinfreiheit für die KI-Vision** behauptet.
+- Die vier historischen Zusatzreferenzen sind als Quellen, nicht als Rekonstruktionen, zu zeigen. Unsichere Daten bleiben sichtbar.

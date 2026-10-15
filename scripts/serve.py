@@ -1,10 +1,10 @@
 """Serve the static export locally at the real GitHub Pages base path."""
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-import argparse
+import argparse, os
 
 ROOT = Path(__file__).resolve().parents[1] / "out"
-BASE = "/wiedersehen-berlin"
+BASE = os.environ.get("NEXT_PUBLIC_BASE_PATH", "/WiederCARE-Berlin")
 
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):

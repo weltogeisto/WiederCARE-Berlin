@@ -8,24 +8,24 @@ function Worker({ index }: { index: number }) {
 }
 export default function CrewReveal({ stop, onDone, sound }: { stop: Stop; onDone: () => void; sound: boolean }) {
  const [reduced] = useState(() => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
- const [phase, setPhase] = useState("Die Archiv-Crew kommt …"); const done = useRef(false); const callback = useRef(onDone);
+ const [visionVisible, setVisionVisible] = useState(reduced);
+ const [phase, setPhase] = useState("Die Zeitreise-Crew kommt …"); const done = useRef(false); const callback = useRef(onDone);
  useEffect(() => { callback.current = onDone; }, [onDone]);
  useEffect(() => {
-  const timers = reduced ? [] : [setTimeout(() => setPhase("Ein Gerüst für die Erinnerung."), 1000), setTimeout(() => setPhase("Wir öffnen das Fenster in die Vergangenheit."), 2500), setTimeout(() => setPhase("Willkommen zurück."), 6000)];
+  const timers = reduced ? [] : [setTimeout(() => setPhase("Ein Gerüst für die Erinnerung."), 1000), setTimeout(() => setPhase("Vom Standortfoto zur historischen Vision."), 2500), setTimeout(() => setVisionVisible(true), 3200), setTimeout(() => setPhase("Willkommen zurück."), 6000)];
   const finish = setTimeout(() => { if (!done.current) { done.current = true; callback.current(); } }, reduced ? 500 : 7000);
   return () => { timers.forEach(clearTimeout); clearTimeout(finish); };
  }, [reduced]);
  const skip = () => { if (!done.current) { done.current = true; callback.current(); } };
  return <div className={`reveal ${reduced ? "reveal-reduced" : ""}`} data-testid="crew-reveal" onClick={skip}>
-  <div className="reveal-stage" aria-label={`Archiv-Reveal: ${stop.title}`}>
-   <img className="reveal-photo" src={stop.before.src} alt={stop.before.title} />
-   <img className="reveal-photo reveal-after" src={stop.after.src} alt={`${stop.title}, Archivaufnahme ${stop.after.date}`} />
+  <div className="reveal-stage" aria-label={`Foto und KI-Vision: ${stop.title}`}>
+   <img className="reveal-photo reveal-before" src={stop.before.src} alt={stop.before.title} />
+   <img className="reveal-photo reveal-after" src={stop.after.src} alt={`${stop.title}, KI-Rekonstruktionsvision`} />
    <div className="scaffold" aria-hidden="true"><i/><i/><i/><b/><b/><b/></div>
    {!reduced && <div className="crew-line"><Worker index={0}/><Worker index={1}/><Worker index={2}/></div>}
-   <span className="photo-stamp">Archiv · {stop.after.date}</span>
-   <div className="reveal-scan" aria-hidden="true"/>
+   <span className="photo-stamp">{visionVisible ? "KI-Rekonstruktionsvision" : `Standortfoto · ${stop.before.date}`}</span>
   </div>
-  <div className="reveal-caption"><span className="eyebrow">{reduced ? "Archivansicht" : phase}</span><button className="text-button" onClick={e => { e.stopPropagation(); skip(); }}>Überspringen <Icon name="arrow" size={16}/></button></div>
-  <p className="honesty-note">Eine echte Archivaufnahme, keine KI-Rekonstruktion. Perspektiven können abweichen.{sound ? "" : " Ton ist aus."}</p>
+  <div className="reveal-caption"><span className="eyebrow">{reduced ? "KI-Rekonstruktionsvision" : phase}</span><button className="text-button" onClick={e => { e.stopPropagation(); skip(); }}>Überspringen <Icon name="arrow" size={16}/></button></div>
+  <p className="honesty-note">Standortfoto → KI-Vision nach Archivvorlage. Andere Perspektive; Farben und Details sind interpretiert.{sound ? "" : " Ton ist aus."}</p>
  </div>;
 }

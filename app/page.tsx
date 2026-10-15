@@ -1,2 +1,6 @@
-import TourApp from "../components/TourApp";
-export default function Page() { return <TourApp />; }
+import ProposalApp from "../components/ProposalApp";
+import "./proposals.css";
+
+export default function Page() {
+  return <ProposalApp />;
+}
