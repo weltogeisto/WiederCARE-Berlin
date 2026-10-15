@@ -41,14 +41,14 @@ Note: `next dev` writes an `AGENTS.md` into the project. It is not ours; commit 
 
 ## Deploy (GitHub Pages, free)
 
-Not deployed yet. The repo is `weltogeisto/wiedersehen-berlin` (public). This work is on branch `claude/new-session-ay0vj8`, not on `main`. `.github/workflows/pages.yml` builds a static export and publishes it on every push to `main`, so nothing runs until the branch is merged and Pages is enabled (see QUESTIONS.md, item 1).
+Not deployed yet. The repo is `weltogeisto/WiederCARE` (public; renamed from `wiedersehen-berlin`, and GitHub redirects the old URL). This work is on branch `claude/new-session-ay0vj8`, not on `main`. `.github/workflows/pages.yml` builds a static export and publishes it on every push to `main`, so nothing runs until the branch is merged and Pages is enabled (see QUESTIONS.md, item 1).
 One-time setup after merging (needs `gh` logged in):
 
-    gh api -X POST repos/weltogeisto/wiedersehen-berlin/pages -f build_type=workflow
+    gh api -X POST repos/weltogeisto/WiederCARE/pages -f build_type=workflow
 
 Or in the browser: Settings > Pages > Source: GitHub Actions.
 
-Live URL: https://weltogeisto.github.io/wiedersehen-berlin/. The workflow sets `NEXT_PUBLIC_BASE_PATH` from the repo name, so no change is needed.
+Live URL: https://weltogeisto.github.io/WiederCARE/. The workflow sets `NEXT_PUBLIC_BASE_PATH` from the repo name (`/WiederCARE`), so no change is needed. Not yet checked: that Pages serves the mixed-case path. If the first deploy shows 404s on `_next/` files, lowercase the base path in `.github/workflows/pages.yml`.
 Tested: clean copy, `npm ci`, `npm run lint`, `npm run build` with the base path. All pass.
 
 ## Deviations from the plan (Opus decided; Sonnet does not revisit)
