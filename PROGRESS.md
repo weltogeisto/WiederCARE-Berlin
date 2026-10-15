@@ -1,4 +1,4 @@
-# Progress (working title: Wiederkehr)
+# Progress (WiederCARE)
 
 Plan: `PLAN.md` ("Fixlings Berlin — Build Plan", exported from the Claude Doc). Last updated 2026-10-15.
 
@@ -25,6 +25,7 @@ Seen working:
 - Sheet: opens from a pin, 624 px tall at 844 px, compare slider moves, stand-in note shows.
 - Reload keeps the found list (3/3, three pins).
 - Plan check "route passes within 20 m of each pin": the routed demo path passes 3.7 m (Apothekenflügel), 0.7 m (Spree front) and 11.2 m (Bauakademie) from the pins. Computed from the router's geometry, so it still needs a re-check on the pins' real photo GPS in Phase 5.
+- After the rename to WiederCARE: a clean copy of the tracked files passes `npm ci`, lint and the build with `NEXT_PUBLIC_BASE_PATH=/WiederCARE`. At 390 x 844 the page title and HUD read "WiederCARE" (card 154 px wide, no wrapping), the map fills the screen, and the first discovery writes `wiedercare:found:v1`.
 
 Defects found and fixed:
 1. Map collapsed to 0 px, so MapLibre drew a 300 px canvas and the map was invisible. `.map { position: fixed; inset: 0 }` lost to `.maplibregl-map { position: relative }`, which loads later. Fix: `main .map` in `app/globals.css`.
@@ -41,8 +42,8 @@ Note: `next dev` writes an `AGENTS.md` into the project. It is not ours; commit 
 
 ## Deploy (GitHub Pages, free)
 
-Not deployed yet. The repo is `weltogeisto/WiederCARE` (public; renamed from `wiedersehen-berlin`, and GitHub redirects the old URL). This work is on branch `claude/new-session-ay0vj8`, not on `main`. `.github/workflows/pages.yml` builds a static export and publishes it on every push to `main`, so nothing runs until the branch is merged and Pages is enabled (see QUESTIONS.md, item 1).
-One-time setup after merging (needs `gh` logged in):
+Not deployed from this branch. The repo is `weltogeisto/WiederCARE` (public; renamed from `wiedersehen-berlin`, and GitHub redirects the old URL). This work is on branch `claude/new-session-ay0vj8`. `main` holds a different app, "Wiedersehen Berlin" (commit `30f71bc`, unrelated history, its base path hard-coded to `/wiedersehen-berlin/`). `.github/workflows/pages.yml` publishes on every push to `main`, so this branch deploys only once it replaces or is merged into `main` and Pages is enabled (see QUESTIONS.md, item 1).
+One-time setup at that point (needs `gh` logged in):
 
     gh api -X POST repos/weltogeisto/WiederCARE/pages -f build_type=workflow
 
@@ -65,7 +66,7 @@ Tested: clean copy, `npm ci`, `npm run lint`, `npm run build` with the base path
 - Hosting moved from Vercel to GitHub Pages (static export). The `/api/fixes` route is gone; fixes are bundled in `data/fixes.ts`.
 - Phase 4 cannot run on Pages: API keys must stay server-side. When we get there, add a small server host (Cloudflare Workers free tier or Vercel) for `POST /api/fix` only; the map stays on Pages.
 - No Supabase tables yet. Two projects exist in the account and neither is dedicated to this; creating one costs money. Decide in QUESTIONS.md.
-- Working title "Wiederkehr" is a placeholder.
+- The app is called WiederCARE (decided 2026-10-15; the repo has the same name). `PLAN.md`'s export note still says the working title is "Wiederkehr": that is superseded. Renamed in the page title, HUD, README, `package.json`, and the `localStorage` / `sessionStorage` keys (`wiedercare:*`; nothing was deployed, so no saved progress is lost).
 
 ## Next, in order
 

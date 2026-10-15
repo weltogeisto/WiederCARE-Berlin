@@ -16,7 +16,7 @@ export const DEMO_WAYPOINTS: LngLat[] = [DEMO_START, ...FIXES.map((f): LngLat =>
 const FOOT = "https://routing.openstreetmap.de/routed-foot/route/v1/driving/";
 
 export async function routeVia(points: LngLat[]): Promise<Path> {
-  const key = "wiederkehr:route:" + points.map((p) => p.join(",")).join(";");
+  const key = "wiedercare:route:" + points.map((p) => p.join(",")).join(";");
   try {
     const cached = sessionStorage.getItem(key);
     if (cached) return makePath(JSON.parse(cached) as LngLat[]);

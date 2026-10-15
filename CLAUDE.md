@@ -1,4 +1,4 @@
-# Wiederkehr: instructions for Claude Code
+# WiederCARE: instructions for Claude Code
 
 Mobile-first map app, Berlin edition of the mechanic seen at fixlings.vercel.app: walk the city, discover three lost buildings, watch a crew rebuild them. Next.js 16 static export, hosted free on GitHub Pages.
 
@@ -13,7 +13,7 @@ Opus planned; you execute. Do not change a decision in the plan or a historical 
 ## Commands
 - `npm run dev`: http://localhost:3000
 - `npm run lint`: type check (`tsc --noEmit`)
-- `npm run build`: static export into `out/`. Test the Pages path with `NEXT_PUBLIC_BASE_PATH=/wiederkehr npm run build`.
+- `npm run build`: static export into `out/`. Test the Pages path with `NEXT_PUBLIC_BASE_PATH=/WiederCARE npm run build`.
 
 ## Rules
 1. Dependencies are capped: `next`, `react`, `react-dom`, `maplibre-gl`, plus what the plan names for Phase 4 (`@supabase/supabase-js`, `@anthropic-ai/sdk`, one image SDK pinned in Phase 0). Anything else goes to `QUESTIONS.md` first.

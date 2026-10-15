@@ -11,7 +11,7 @@ import type { MapApi } from "./MapView";
 
 const MapView = dynamic(() => import("./MapView"), { ssr: false });
 
-const STORE = "wiederkehr:found:v1";
+const STORE = "wiedercare:found:v1";
 
 type Mode = "idle" | "demo" | "tap" | "gps";
 type Walk = { path: Path; d: number; speed: number };
@@ -212,7 +212,7 @@ export default function App() {
       />
       <header className="hud-top">
         <div className="brand">
-          <h1>Wiederkehr</h1>
+          <h1>WiederCARE</h1>
           <p>{found.length}/{fixes.length} fixes found</p>
         </div>
       </header>

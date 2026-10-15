@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Wiederkehr",
+  title: "WiederCARE",
   description: "Walk Berlin's centre and watch its lost buildings come back.",
 };
 
