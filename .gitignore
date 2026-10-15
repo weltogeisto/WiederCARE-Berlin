@@ -1,0 +1,19 @@
+.env.local
+.env
+.env.*.local
+!.env.example
+node_modules/
+.next/
+out/
+.vercel/
+*.tsbuildinfo
+.DS_Store
+
+# Local access diagnostics are not public project content
+FINDINGS.md
+QUESTIONS.md
+PROGRESS.md
+.cache/
+test-results/
+playwright-report/
+public/vendor/

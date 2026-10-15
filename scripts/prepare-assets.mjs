@@ -1,0 +1,11 @@
+import { createRequire } from "node:module";
+import { dirname, join } from "node:path";
+import { mkdirSync, copyFileSync, existsSync } from "node:fs";
+const require = createRequire(import.meta.url);
+const directory = dirname(require.resolve("maplibre-gl/package.json"));
+mkdirSync("public/vendor", { recursive: true });
+copyFileSync(join(directory, "dist/maplibre-gl-worker.mjs"), "public/vendor/maplibre-gl-worker.mjs");
+const license = ["LICENSE.txt", "LICENSE"].map(p => join(directory,p)).find(existsSync);
+if (!license) throw new Error("MapLibre license file missing");
+copyFileSync(license, "public/vendor/MAPLIBRE-LICENSE.txt");
+console.log("Prepared self-hosted MapLibre worker and BSD license.");

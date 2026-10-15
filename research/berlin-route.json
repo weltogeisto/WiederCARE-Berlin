@@ -1,0 +1,649 @@
+{
+  "schemaVersion": 1,
+  "description": "OSM-verified demo walking loop for exactly three Berlin reconstruction stops. Coordinates are OSM route geometry / Nominatim map positions, not phone GPS or user-photo EXIF.",
+  "sourceAttribution": "© OpenStreetMap contributors, ODbL 1.0",
+  "attributionUrl": "https://www.openstreetmap.org/copyright",
+  "nominatimUrl": "https://nominatim.openstreetmap.org/",
+  "nominatimResults": [
+    {"query": "Lustgarten, Berlin, Germany", "osmType": "way", "osmId": 16000014, "feature": "park", "lat": 52.5185383, "lng": 13.3993963, "sourceUrl": "https://www.openstreetmap.org/way/16000014"},
+    {"query": "Liebknechtbrücke, Berlin, Germany", "osmType": "way", "osmId": 339201206, "feature": "bridge", "lat": 52.5187891, "lng": 13.4022984, "sourceUrl": "https://www.openstreetmap.org/way/339201206"},
+    {"query": "Liebknechtbrücke, Berlin, Germany", "osmType": "way", "osmId": 23013165, "feature": "named bridge road line", "lat": 52.5187421, "lng": 13.4023666, "sourceUrl": "https://www.openstreetmap.org/way/23013165"},
+    {"query": "Rathausbrücke, Berlin, Germany", "osmType": "way", "osmId": 339201209, "feature": "bridge", "lat": 52.5170838, "lng": 13.4040261, "sourceUrl": "https://www.openstreetmap.org/way/339201209"},
+    {"query": "Rathausbrücke, Berlin, Germany", "osmType": "way", "osmId": 38208961, "feature": "named bridge road line", "lat": 52.5170929, "lng": 13.4040516, "sourceUrl": "https://www.openstreetmap.org/way/38208961"},
+    {"query": "Schleusenbrücke, Berlin, Germany", "osmType": "way", "osmId": 339201216, "feature": "bridge", "lat": 52.5158493, "lng": 13.3997942, "sourceUrl": "https://www.openstreetmap.org/way/339201216"},
+    {"query": "Schleusenbrücke, Berlin, Germany", "osmType": "way", "osmId": 8008608, "feature": "named bridge road line", "lat": 52.5158493, "lng": 13.3997944, "sourceUrl": "https://www.openstreetmap.org/way/8008608"},
+    {"query": "Schinkelplatz, Berlin, Germany", "osmType": "way", "osmId": 572779738, "feature": "square", "lat": 52.5167053, "lng": 13.3985843, "sourceUrl": "https://www.openstreetmap.org/way/572779738"}
+  ],
+  "routeService": "OSRM routed-foot profile via routing.openstreetmap.de",
+  "routeServiceUrl": "https://routing.openstreetmap.de/routed-foot/route/v1/driving/13.3993963,52.5185383;13.40239635,52.5186834;13.4027008,52.5188079;13.4029662,52.5185022;13.4034905,52.5179629;13.40410135,52.5170419;13.4038507,52.5169379;13.4013566,52.5160648;13.3997944,52.5158493;13.3983435,52.5172793?overview=full&geometries=geojson&steps=true&alternatives=false&continue_straight=true",
+  "routeDistanceMeters": 1140.4,
+  "routeServiceDurationSeconds": 912.4,
+  "routePointCount": 84,
+  "bounds": {
+    "minLat": 52.513,
+    "maxLat": 52.521,
+    "minLng": 13.395,
+    "maxLng": 13.408
+  },
+  "stops": [
+    {
+      "id": "apotheke",
+      "lat": 52.5186834,
+      "lng": 13.40239635,
+      "label": "Shortened Apothekenflügel — Liebknechtbrücke south-side path",
+      "coordinateSource": "OSM footway way/1170013463 south-side sidewalk midpoint; route snap 0 m; demo pin, not photo GPS",
+      "sourceUrl": "https://www.openstreetmap.org/way/1170013463"
+    },
+    {
+      "id": "spreefront",
+      "lat": 52.5170419,
+      "lng": 13.40410135,
+      "label": "Historic Schloss Spreefront / Grüner Hut — Rathausbrücke south-side path",
+      "coordinateSource": "OSM footway way/1228674291 south-side sidewalk midpoint; route snap 0 m; demo pin, not photo GPS",
+      "sourceUrl": "https://www.openstreetmap.org/way/1228674291"
+    },
+    {
+      "id": "bauakademie",
+      "lat": 52.5172793,
+      "lng": 13.3983435,
+      "label": "Schinkel Bauakademie — north edge of Schinkelplatz",
+      "coordinateSource": "Northmost vertex of OSM pedestrian area way/1182178817 and Nominatim square way/572779738; route snap 0 m; demo pin, not photo GPS",
+      "sourceUrl": "https://www.openstreetmap.org/way/1182178817"
+    }
+  ],
+  "route": [
+    {
+      "lat": 52.518488,
+      "lng": 13.399447,
+      "label": "Lustgarten centre of lawn (start)",
+      "coordinateSource": "Nominatim named park way/16000014 centroid; OSRM snaps 6.6 m to walkable path"
+    },
+    {
+      "lat": 52.518527,
+      "lng": 13.399549,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 1 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518512,
+      "lng": 13.399568,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 2 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518499,
+      "lng": 13.399591,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 3 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518211,
+      "lng": 13.399887,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 4 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518057,
+      "lng": 13.400044,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 5 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518218,
+      "lng": 13.400465,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 6 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518201,
+      "lng": 13.400482,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 7 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518163,
+      "lng": 13.40052,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 8 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518069,
+      "lng": 13.400618,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 9 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518032,
+      "lng": 13.400653,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 10 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518009,
+      "lng": 13.400676,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 11 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518066,
+      "lng": 13.400829,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 12 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518271,
+      "lng": 13.401382,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 13 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518457,
+      "lng": 13.401858,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 14 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518484,
+      "lng": 13.401928,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 15 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518495,
+      "lng": 13.401945,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 16 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518545,
+      "lng": 13.402063,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 17 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518559,
+      "lng": 13.402092,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 18 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518683,
+      "lng": 13.402396,
+      "label": "Liebknechtbrücke south-side pedestrian path midpoint — Apothekenflügel stop",
+      "coordinateSource": "Midpoint of OSM footway way/1170013463, mapped south-side bridge sidewalk; OSRM snaps 0 m"
+    },
+    {
+      "lat": 52.518808,
+      "lng": 13.402701,
+      "label": "East end of Liebknechtbrücke south-side path",
+      "coordinateSource": "Eastern endpoint of OSM footway way/1170013463"
+    },
+    {
+      "lat": 52.518777,
+      "lng": 13.402727,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 21 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518667,
+      "lng": 13.402821,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 22 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.51862,
+      "lng": 13.402861,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 23 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518595,
+      "lng": 13.402883,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 24 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518581,
+      "lng": 13.402896,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 25 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518568,
+      "lng": 13.402908,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 26 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.518502,
+      "lng": 13.402966,
+      "label": "East-bank Spreeufer footpath begins",
+      "coordinateSource": "Mapped vertex of OSM Spreeufer footway way/260138639"
+    },
+    {
+      "lat": 52.518147,
+      "lng": 13.403303,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 28 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517963,
+      "lng": 13.403491,
+      "label": "Southbound on east-bank Spreeufer",
+      "coordinateSource": "Mapped vertex of OSM Spreeufer footway way/260138639"
+    },
+    {
+      "lat": 52.517326,
+      "lng": 13.404127,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 30 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517258,
+      "lng": 13.404201,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 31 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517116,
+      "lng": 13.404356,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 32 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517083,
+      "lng": 13.404392,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 33 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517033,
+      "lng": 13.404451,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 34 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517011,
+      "lng": 13.404476,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 35 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517028,
+      "lng": 13.404517,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 36 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517038,
+      "lng": 13.404543,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 37 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.51707,
+      "lng": 13.404508,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 38 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517128,
+      "lng": 13.404443,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 39 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517166,
+      "lng": 13.4044,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 40 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517146,
+      "lng": 13.404352,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 41 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517042,
+      "lng": 13.404101,
+      "label": "Rathausbrücke south-side pedestrian path midpoint — Spreefront stop",
+      "coordinateSource": "Midpoint of OSM footway way/1228674291, mapped south-side bridge sidewalk; OSRM snaps 0 m"
+    },
+    {
+      "lat": 52.516938,
+      "lng": 13.403851,
+      "label": "West end of Rathausbrücke south-side path",
+      "coordinateSource": "Western endpoint of OSM footway way/1228674291"
+    },
+    {
+      "lat": 52.51691,
+      "lng": 13.403783,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 44 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516906,
+      "lng": 13.403773,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 45 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516916,
+      "lng": 13.403764,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 46 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516699,
+      "lng": 13.40322,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 47 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516502,
+      "lng": 13.402723,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 48 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516496,
+      "lng": 13.402714,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 49 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.51653,
+      "lng": 13.402679,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 50 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516576,
+      "lng": 13.40263,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 51 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516485,
+      "lng": 13.402405,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 52 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516408,
+      "lng": 13.402213,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 53 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516065,
+      "lng": 13.401357,
+      "label": "Schloßplatz south-front path, continuing west",
+      "coordinateSource": "Mapped vertex of OSM pedestrian area way/1173675373 (Schloßplatz); OSRM names this leg Schloßplatz"
+    },
+    {
+      "lat": 52.516056,
+      "lng": 13.401294,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 55 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516059,
+      "lng": 13.401229,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 56 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516075,
+      "lng": 13.40117,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 57 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516101,
+      "lng": 13.401122,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 58 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516231,
+      "lng": 13.400978,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 59 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516217,
+      "lng": 13.400939,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 60 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516231,
+      "lng": 13.400854,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 61 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516237,
+      "lng": 13.40084,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 62 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.51624,
+      "lng": 13.400822,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 63 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516241,
+      "lng": 13.400803,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 64 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516237,
+      "lng": 13.400781,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 65 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516191,
+      "lng": 13.400665,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 66 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516184,
+      "lng": 13.400567,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 67 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.515984,
+      "lng": 13.40012,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 68 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.515901,
+      "lng": 13.399996,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 69 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.515884,
+      "lng": 13.39993,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 70 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.515849,
+      "lng": 13.399794,
+      "label": "Schleusenbrücke crossing",
+      "coordinateSource": "Midpoint of OSM highway way/8008608 (Schleusenbrücke); Nominatim also resolved the named bridge"
+    },
+    {
+      "lat": 52.515815,
+      "lng": 13.399659,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 72 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.5158,
+      "lng": 13.399593,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 73 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516292,
+      "lng": 13.399154,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 74 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516314,
+      "lng": 13.399237,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 75 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516377,
+      "lng": 13.399177,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 76 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516501,
+      "lng": 13.399066,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 77 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516647,
+      "lng": 13.398933,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 78 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516764,
+      "lng": 13.39883,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 79 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.516898,
+      "lng": 13.398708,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 80 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517037,
+      "lng": 13.398581,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 81 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517226,
+      "lng": 13.398413,
+      "label": "OSM walking-route vertex",
+      "coordinateSource": "OSRM routed-foot geometry vertex 82 on the OSM pedestrian network"
+    },
+    {
+      "lat": 52.517279,
+      "lng": 13.398344,
+      "label": "Schinkelplatz north edge — Bauakademie stop (end)",
+      "coordinateSource": "Northmost vertex shared by Nominatim square way/572779738 and OSM pedestrian area way/1182178817; OSRM snaps 0 m"
+    }
+  ],
+  "routeCheckpoints": [
+    {
+      "label": "Lustgarten centre of lawn (start)",
+      "lat": 52.518488,
+      "lng": 13.399447,
+      "snapDistanceMeters": 6.55,
+      "coordinateSource": "Nominatim named park way/16000014 centroid; OSRM snaps 6.6 m to walkable path",
+      "sourceUrl": "https://www.openstreetmap.org/way/16000014"
+    },
+    {
+      "label": "Liebknechtbrücke south-side pedestrian path midpoint — Apothekenflügel stop",
+      "lat": 52.518683,
+      "lng": 13.402396,
+      "snapDistanceMeters": 0,
+      "coordinateSource": "Midpoint of OSM footway way/1170013463, mapped south-side bridge sidewalk; OSRM snaps 0 m",
+      "sourceUrl": "https://www.openstreetmap.org/way/1170013463"
+    },
+    {
+      "label": "East end of Liebknechtbrücke south-side path",
+      "lat": 52.518808,
+      "lng": 13.402701,
+      "snapDistanceMeters": 0,
+      "coordinateSource": "Eastern endpoint of OSM footway way/1170013463",
+      "sourceUrl": "https://www.openstreetmap.org/way/1170013463"
+    },
+    {
+      "label": "East-bank Spreeufer footpath begins",
+      "lat": 52.518502,
+      "lng": 13.402966,
+      "snapDistanceMeters": 0,
+      "coordinateSource": "Mapped vertex of OSM Spreeufer footway way/260138639",
+      "sourceUrl": "https://www.openstreetmap.org/way/260138639"
+    },
+    {
+      "label": "Southbound on east-bank Spreeufer",
+      "lat": 52.517963,
+      "lng": 13.403491,
+      "snapDistanceMeters": 0,
+      "coordinateSource": "Mapped vertex of OSM Spreeufer footway way/260138639",
+      "sourceUrl": "https://www.openstreetmap.org/way/260138639"
+    },
+    {
+      "label": "Rathausbrücke south-side pedestrian path midpoint — Spreefront stop",
+      "lat": 52.517042,
+      "lng": 13.404101,
+      "snapDistanceMeters": 0,
+      "coordinateSource": "Midpoint of OSM footway way/1228674291, mapped south-side bridge sidewalk; OSRM snaps 0 m",
+      "sourceUrl": "https://www.openstreetmap.org/way/1228674291"
+    },
+    {
+      "label": "West end of Rathausbrücke south-side path",
+      "lat": 52.516938,
+      "lng": 13.403851,
+      "snapDistanceMeters": 0,
+      "coordinateSource": "Western endpoint of OSM footway way/1228674291",
+      "sourceUrl": "https://www.openstreetmap.org/way/1228674291"
+    },
+    {
+      "label": "Schloßplatz south-front path, continuing west",
+      "lat": 52.516065,
+      "lng": 13.401357,
+      "snapDistanceMeters": 0,
+      "coordinateSource": "Mapped vertex of OSM pedestrian area way/1173675373 (Schloßplatz); OSRM names this leg Schloßplatz",
+      "sourceUrl": "https://www.openstreetmap.org/way/1173675373"
+    },
+    {
+      "label": "Schleusenbrücke crossing",
+      "lat": 52.515849,
+      "lng": 13.399794,
+      "snapDistanceMeters": 0,
+      "coordinateSource": "Midpoint of OSM highway way/8008608 (Schleusenbrücke); Nominatim also resolved the named bridge",
+      "sourceUrl": "https://www.openstreetmap.org/way/8008608"
+    },
+    {
+      "label": "Schinkelplatz north edge — Bauakademie stop (end)",
+      "lat": 52.517279,
+      "lng": 13.398344,
+      "snapDistanceMeters": 0,
+      "coordinateSource": "Northmost vertex shared by Nominatim square way/572779738 and OSM pedestrian area way/1182178817; OSRM snaps 0 m",
+      "sourceUrl": "https://www.openstreetmap.org/way/1182178817"
+    }
+  ],
+  "verification": {
+    "stopsExactlyThree": true,
+    "routePolylineInsideBounds": true,
+    "allRouteWaypointsSnappedWithin0_5m": true,
+    "crossings": "OSRM foot-route geometry and OSM geometry were visually checked; the intended water crossings are at Liebknechtbrücke, Rathausbrücke and Schleusenbrücke.",
+    "caveat": "The route is a public-map demo geometry. Walkability depends on current access/construction; the three stop pins are OSM-derived approximations and must be replaced by GPS from the user’s actual before photos when available."
+  }
+}

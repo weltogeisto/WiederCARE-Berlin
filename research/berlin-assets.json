@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "stopIds": ["apotheke", "spreefront", "bauakademie"],
+  "imageUseNotice": "All local images are genuine Wikimedia Commons source images resized and converted to WebP; no image was generated or AI-restored. The `before` image is a contemporary-site photo; `after` and `historicalReferences` are archival visual sources, not reconstructed after-images. Image processing changed format/size only; source EXIF was removed. Dates and camera perspectives are taken from Commons metadata and are caveated where conflicting or approximate.",
+  "stops": [
+    {
+      "id": "apotheke",
+      "label": "Shortened Apothekenflügel",
+      "historicalSummary": "The Renaissance Apothekenflügel was begun in 1585 for Elector Johann Georg, attributed to Rochus Graf zu Lynar, and housed the court pharmacy. It was shortened at the end of the 19th century for the new Kaiser-Wilhelm-Straße and bridge (today Karl-Liebknecht-Straße and Liebknechtbrücke); its new end received a historicist Renaissance front. The wing was demolished in September 1950. The circa-1900 Schlossapotheke postcard is a period image after the shortening; it is an archival comparator, not an AI restoration.",
+      "citations": [
+        {
+          "claim": "Apothekenflügel location, history and shortening",
+          "title": "Berliner Kunstkammer — Standorte",
+          "url": "https://berlinerkunstkammer.de/standorte"
+        },
+        {
+          "claim": "Berlin Palace building chronology",
+          "title": "Förderverein Berliner Schloss — Baugeschichte",
+          "url": "https://berliner-schloss.de/das-historische-schloss/baugeschichte/"
+        },
+        {
+          "claim": "1950 demolition sequence",
+          "title": "FU Berlin Refubium — Chapter 2",
+          "url": "https://refubium.fu-berlin.de/bitstream/handle/fub188/6606/2_Kapitel2_kl.pdf?sequence=3&isAllowed=y"
+        }
+      ],
+      "perspectiveCaveat": "The contemporary image is a broad Spree-side view from/near the Liebknechtbrücke showing the modern Humboldt Forum; it is not documented as an exact south-railing camera position. The mapped stop coordinate is an OSM-derived demo pin, not photo GPS.",
+      "before": {
+        "localPath": "public/media/apothekenfluegel-before.webp",
+        "title": "Spree Liebknechtbrücke Berlin-Mitte 02.jpg",
+        "author": "Singlespeedfahrer",
+        "date": "Commons DateTimeOriginal: 2021-12-22 13:37:57; embedded EXIF DateTime: 2023-10-31 18:23:17 (conflict; exact capture date unresolved)",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spree_Liebknechtbr%C3%BCcke_Berlin-Mitte_02.jpg",
+        "mediaType": "photograph",
+        "localDimensions": [1400, 878],
+        "localBytes": 197354
+      },
+      "after": {
+        "localPath": "public/media/apothekenfluegel-archive.webp",
+        "title": "Berlin, Mitte, Berlin - Schlossapotheke (Zeno Ansichtskarten).jpg",
+        "author": "Ludwig Walter, Berlin",
+        "date": "circa 1900 (Commons file metadata)",
+        "license": "Public domain (Commons file page)",
+        "licenseUrl": null,
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berlin,_Mitte,_Berlin_-_Schlossapotheke_(Zeno_Ansichtskarten).jpg",
+        "mediaType": "historical postcard/photo",
+        "localDimensions": [1280, 830],
+        "localBytes": 120470
+      },
+      "historicalReferences": [
+        {
+          "localPath": "public/media/apothekenfluegel-archive-1905.webp",
+          "title": "Max Missmann, Blick über die Kaiser-Wilhelm-Brücke auf das königliche Schloss, 1905.jpg",
+          "author": "Max Missmann",
+          "date": "1905",
+          "license": "Public domain (Commons file page)",
+          "licenseUrl": null,
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Max_Missmann,_Blick_%C3%BCber_die_Kaiser-Wilhelm-Br%C3%BCcke_auf_das_k%C3%B6nigliche_Schloss,_1905.jpg",
+          "mediaType": "historical photograph; contextual bridge view",
+          "localDimensions": [1280, 989],
+          "localBytes": 274372
+        }
+      ]
+    },
+    {
+      "id": "spreefront",
+      "label": "Historic Schloss Spreefront / Grüner Hut",
+      "historicalSummary": "The palace's east side was its oldest frontage: it included fabric from the castle founded in 1443, 16th-century Renaissance additions, the Grüner Hut tower and an irregular cluster of wings at the water's edge. The historical state selected here is circa 1900–1939; the palace was demolished in 1950–51. Today's Humboldt Forum has a modern east/Spree façade, unlike the reconstructed Baroque fronts on its other sides. The archival 1903 and circa-1900 sources are period images, not AI restorations.",
+      "citations": [
+        {
+          "claim": "Historic Berlin Palace building phases and demolition",
+          "title": "Förderverein Berliner Schloss — Baugeschichte",
+          "url": "https://berliner-schloss.de/das-historische-schloss/baugeschichte/"
+        },
+        {
+          "claim": "Grüner Hut tower and the view from Kurfürstenbrücke",
+          "title": "arthistoricum — Grüner Hut view",
+          "url": "https://www.arthistoricum.net/en/werkansicht/dlf/73335/57"
+        },
+        {
+          "claim": "Humboldt Forum's modern east façade",
+          "title": "Stuttgarter Zeitung — Berlin Palace east façade",
+          "url": "https://www.stuttgarter-zeitung.de/kultur/berliner-schloss-steht-vor-der-eroeffnung-preussens-gloria-ist-wieder-da-78888420.html"
+        }
+      ],
+      "perspectiveCaveat": "The contemporary photo clearly shows the modern Spree-facing east façade but is not documented as an exact Rathausbrücke camera position. It is a genuine 2021 facade view; the stop pin is an OSM-derived demo coordinate, not photo GPS.",
+      "before": {
+        "localPath": "public/media/spreefront-before.webp",
+        "title": "2021-07-19 Humboldt Forum Berlin 08.jpg",
+        "author": "Geoprofi Lars",
+        "date": "2021-07-19 17:20:41 (Commons DateTimeOriginal)",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2021-07-19_Humboldt_Forum_Berlin_08.jpg",
+        "mediaType": "photograph",
+        "localDimensions": [1280, 960],
+        "localBytes": 154110
+      },
+      "after": {
+        "localPath": "public/media/spreefront-archive.webp",
+        "title": "Berlin Schloss, Spreeseite (Max Missmann, 1903).jpg",
+        "author": "Max Missmann",
+        "date": "1903",
+        "license": "Public domain (Commons file page)",
+        "licenseUrl": null,
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berlin_Schloss,_Spreeseite_(Max_Missmann,_1903).jpg",
+        "mediaType": "historical photograph",
+        "localDimensions": [1280, 1031],
+        "localBytes": 495910
+      },
+      "historicalReferences": [
+        {
+          "localPath": "public/media/spreefront-archive-kurfuerstenbruecke.webp",
+          "title": "Berlin Kurfuerstenbruecke 1900.jpg",
+          "author": "Unknown author (Commons file metadata)",
+          "date": "circa 1900 (Commons file metadata)",
+          "license": "Public domain (Commons file page)",
+          "licenseUrl": null,
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berlin_Kurfuerstenbruecke_1900.jpg",
+          "mediaType": "historical photograph/postcard",
+          "localDimensions": [1053, 1400],
+          "localBytes": 257314
+        }
+      ]
+    },
+    {
+      "id": "bauakademie",
+      "label": "Schinkel Bauakademie",
+      "historicalSummary": "Karl Friedrich Schinkel's Bauakademie was built in 1832–1836 under Emil Flaminius as a near-square red-brick block with terracotta ornament. It burned out in February 1945, was partly rebuilt, and was demolished in 1962. The contemporary photo shows the still-empty plot with its surviving/reconstructed sample corner; no complete academy is present. The archival photograph is catalogued with DateTimeOriginal 1911 although its filename contains “1888”; preserve that source-date discrepancy. Gaertner's 1868 painting is a separate period depiction, not a photograph.",
+      "citations": [
+        {
+          "claim": "Bauakademie's design, construction, fire and demolition history",
+          "title": "Berliner Bauakademie — history",
+          "url": "https://de.wikipedia.org/wiki/Berliner_Bauakademie"
+        },
+        {
+          "claim": "Schinkelplatz and the north entrance context",
+          "title": "Berlin.de — Schinkelplatz memorial plaque PDF",
+          "url": "https://berlin.de/kunst-und-kultur-mitte/geschichte/erinnerungskultur/gedenktafel-datenbank/id-1120_schinkelplatz.pdf"
+        },
+        {
+          "claim": "Plot and temporary-use status",
+          "title": "Entwicklungsstadt — Bauakademie plot",
+          "url": "https://www.entwicklungsstadt.de/bauakademie-am-schinkelplatz-gruene-zwischennutzung-auf-leerem-grundstueck/"
+        },
+        {
+          "claim": "January 2026 agreement on historic façades",
+          "title": "BauNetz — Senate decision on rebuilding",
+          "url": "https://www.baunetz.de/meldungen/Meldungen-Senatsbeschluss_zum_Wiederaufbau_der_Bauakademie_in_Berlin_10215021.html"
+        }
+      ],
+      "perspectiveCaveat": "The contemporary 2022 canalside view shows the open Bauakademie plot and its brick sample corner, but is not documented as the exact north-edge-of-Schinkelplatz bearing in the plan. The stop pin is OSM-derived, not photo GPS.",
+      "before": {
+        "localPath": "public/media/bauakademie-before.webp",
+        "title": "Berlin-Schinkelsche Bauakademie-02-2022-gje.jpg",
+        "author": "Gerd Eichmann",
+        "date": "2022-04-21 18:45:50 (Commons DateTimeOriginal)",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berlin-Schinkelsche_Bauakademie-02-2022-gje.jpg",
+        "mediaType": "photograph",
+        "localDimensions": [1111, 1400],
+        "localBytes": 335898
+      },
+      "after": {
+        "localPath": "public/media/bauakademie-archive.webp",
+        "title": "M Bauakademie Berlin 1888.jpg",
+        "author": "Königlich Preußische Messbildanstalt",
+        "date": "1911 (Commons DateTimeOriginal; filename includes 1888)",
+        "license": "Public domain (Commons file page)",
+        "licenseUrl": null,
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:M_Bauakademie_Berlin_1888.jpg",
+        "mediaType": "historical photograph",
+        "localDimensions": [1400, 1227],
+        "localBytes": 324304,
+        "dateNote": "Commons DateTimeOriginal gives 1911; do not silently substitute the 1888 embedded in the filename as the capture date."
+      },
+      "historicalReferences": [
+        {
+          "localPath": "public/media/bauakademie-archive-gaertner.webp",
+          "title": "Bauakademie Schinkel (Eduard Gaertner).jpg",
+          "author": "Eduard Gaertner",
+          "date": "1868",
+          "license": "Public domain (Commons file page)",
+          "licenseUrl": null,
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bauakademie_Schinkel_(Eduard_Gaertner).jpg",
+          "mediaType": "painting; period visual source, not a photograph",
+          "localDimensions": [1280, 1011],
+          "localBytes": 485052
+        }
+      ]
+    }
+  ]
+}
