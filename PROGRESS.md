@@ -11,7 +11,7 @@ Plan: `PLAN.md` ("Fixlings Berlin — Build Plan", exported from the Claude Doc)
 | 2 Fixes and discovery | Built, seen in a browser | Node test: pins 68/213/383 m apart, start is 68 m from pin 1, walk finds all three in order at 35 m. Browser: the routed demo walk found all three in order, pins appear, progress survives a reload. No database yet: fixes are bundled in `data/fixes.ts`. |
 | 3 Crew reveal | Built, seen in a browser | 7 s sequence per plan, own SVG crew, WebAudio sound, reduced-motion fallback. Browser: crew in, scaffold, wipe line, tap to skip, and replay from the sheet all play. Sound NOT heard (headless). |
 | 4 Make a fix | Not started | Needs `ANTHROPIC_API_KEY`, an image provider and key, and a server host (Pages is static). Composer button is not rendered yet. |
-| 5 Berlin seeds | Images in, NOT approved | The image package of 15 Oct 2026 is integrated on this branch: three third-party before photos (Wikimedia Commons, 2021 to 2023), three AI after-visions, four references. Shown with credits and an "AI vision" label (see `seeds/refs/LICENSES.md`). Open: the owner's written approval of the three after-images (rule 8, table below); rule 7 (one public-domain reference per fix, see QUESTIONS.md); pins are still the published bridge coordinates, not photo GPS; `scripts/generate-seeds.ts` is not built because the visions were made outside this repo (model and prompts unknown). Stand-in SVG illustrations remain in `components/Art.tsx` as the fallback. |
+| 5 Berlin seeds | Images in, after-images approved | The image package of 15 Oct 2026 is integrated on this branch: three third-party before photos (Wikimedia Commons, 2021 to 2023), three AI after-visions, four references. Shown with credits and an "AI vision" label (see `seeds/refs/LICENSES.md`). The owner approved all three after-images on 2026-10-15 (rule 8, table below). Open: rule 7 (one public-domain reference per fix, see QUESTIONS.md); pins are still the published bridge coordinates, not photo GPS; `scripts/generate-seeds.ts` is not built because the visions were made outside this repo (model and prompts unknown). Stand-in SVG illustrations remain in `components/Art.tsx` as the fallback. |
 | 6 Live demo | Blocked | Needs 5, and a deploy. |
 
 ## Browser verification (2026-10-15)
@@ -43,13 +43,13 @@ Note: `next dev` writes an `AGENTS.md` into the project. It is not ours; commit 
 
 ## After-image approval (CLAUDE.md rule 8)
 
-The owner fills this in. Until a row says approved, that image must not reach `main` or the live site.
+Rule 8 asks for the owner's written approval before an after-image ships. The owner approved all three in the session on 2026-10-15 and asked Claude to record it here. Approval covers the images only. It does not decide which app becomes `main` (QUESTIONS.md, item 1) and does not settle the reference-rule, pin and provenance questions (items 6 to 8).
 
 | Fix | Approved? | Date | Notes |
 | --- | --- | --- | --- |
-| 1 Apothekenflügel | pending | | |
-| 2 Spree front | pending | | |
-| 3 Bauakademie | pending | | |
+| 1 Apothekenflügel | approved | 2026-10-15 | Owner's reply in the session. Shared under CC BY-SA 3.0 DE, credit shown in the app. |
+| 2 Spree front | approved | 2026-10-15 | Approved after being told it is a partial Spree-side view with no green-roofed tower (the plan names the Grüner Hut). |
+| 3 Bauakademie | approved | 2026-10-15 | Approved after being told the source photograph's date is unresolved (1888 or 1911) and the brick colours are interpreted. |
 
 For the review, here is what I saw comparing each vision with its archive photo by eye. This is not a survey, and the call stays with the owner.
 - Fix 1: the structure follows the 1928 photograph (stepped gable with two round openings, domed corner turret, oriel with coat of arms, balustraded wing on the right). Invented or changed: all colours, the ivy pattern, cleaner surfaces, the fence, and the two pedestrians.

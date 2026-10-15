@@ -31,8 +31,8 @@ export type Fix = {
 //
 // The before photos are dated 2021 to 2023 and come from Wikimedia Commons. The after images are AI
 // reconstruction visions made from archive photographs. The two do not share a camera position, so the
-// sheet shows them one above the other and never as a registered slider. The after images have NOT been
-// approved yet (see PROGRESS.md): do not ship them to main before that.
+// sheet shows them one above the other and never as a registered slider. The owner approved the three
+// after images on 2026-10-15 (see PROGRESS.md).
 export const FIXES: Fix[] = [
   {
     id: "apothekenfluegel",

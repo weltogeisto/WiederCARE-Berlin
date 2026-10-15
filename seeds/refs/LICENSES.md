@@ -6,7 +6,7 @@ Provenance: the ten images came in the package `Berlin_Rekonstruktion_Vorher_Nac
 
 ## Status
 
-- **The three AI after-images are NOT approved.** `CLAUDE.md` rule 8 and the plan require the owner's written approval in `PROGRESS.md` before they ship. Until then they must not reach `main` or the live site.
+- **The three AI after-images are approved by the owner (2026-10-15),** recorded in `PROGRESS.md` as `CLAUDE.md` rule 8 requires. Approval covers the images only; the reference-rule question below is still open.
 - **Share-alike:** the Apothekenflügel AI vision is an adaptation of a CC BY-SA 3.0 DE photograph, so it is shared under CC BY-SA 3.0 DE with the credit shown in the app.
 - **Reference rule (`CLAUDE.md` rule 7):** public-domain references only, and fewer than two per fix means escalate. Each fix has **one** public-domain reference. Fix 1 also has a CC BY-SA reference. This is raised in `QUESTIONS.md`.
 - The before photos are third-party photographs from 2021 to 2023, not the owner's own shots. Camera positions differ from the pins and from the archive views, so the images are shown one above the other, never as a registered slider.
