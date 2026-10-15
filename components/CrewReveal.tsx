@@ -81,6 +81,7 @@ export default function CrewReveal({ fix, onDone }: { fix: Fix; onDone: () => vo
       </div>
       <div className="reveal-caption">
         <strong>{fix.title}</strong>
+        {fix.aiAfter && <small>AI reconstruction vision</small>}
         <span>Tap to skip</span>
       </div>
     </div>

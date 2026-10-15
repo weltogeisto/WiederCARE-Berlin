@@ -104,6 +104,7 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--spree); out
 .reveal-caption { color: #fff; text-align: center; }
 .reveal-caption strong { display: block; font: 600 21px/1.2 var(--serif); }
 .reveal-caption span { display: block; margin-top: 4px; font: 500 13px var(--sans); opacity: .85; }
+.reveal-caption small { display: block; margin-top: 2px; font: 500 12px var(--sans); opacity: .75; }
 
 /* Fix sheet */
 .sheet {
@@ -127,6 +128,13 @@ button:focus-visible, input:focus-visible { outline: 3px solid var(--spree); out
 .tag-l { left: 8px; }
 .tag-r { right: 8px; }
 .compare input[type="range"] { position: absolute; left: 0; right: 0; bottom: 8px; width: 100%; margin: 0; accent-color: var(--brick); }
+/* Real photos and AI visions: stacked, whole image visible, with credits. */
+.pair { display: grid; gap: 14px; }
+.shot { margin: 0; }
+.shot-frame { position: relative; overflow: hidden; border-radius: 12px; background: #e6edf0; }
+.shot-frame img { display: block; width: 100%; height: auto; max-height: 56vh; object-fit: contain; }
+.shot figcaption { margin-top: 6px; font: 400 12px/1.4 var(--sans); color: #4a5a70; }
+.shot figcaption a { color: var(--spree); }
 
 @media (prefers-reduced-motion: reduce) {
   .user-dot { animation: none; }

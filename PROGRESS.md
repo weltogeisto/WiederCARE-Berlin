@@ -11,7 +11,7 @@ Plan: `PLAN.md` ("Fixlings Berlin — Build Plan", exported from the Claude Doc)
 | 2 Fixes and discovery | Built, seen in a browser | Node test: pins 68/213/383 m apart, start is 68 m from pin 1, walk finds all three in order at 35 m. Browser: the routed demo walk found all three in order, pins appear, progress survives a reload. No database yet: fixes are bundled in `data/fixes.ts`. |
 | 3 Crew reveal | Built, seen in a browser | 7 s sequence per plan, own SVG crew, WebAudio sound, reduced-motion fallback. Browser: crew in, scaffold, wipe line, tap to skip, and replay from the sheet all play. Sound NOT heard (headless). |
 | 4 Make a fix | Not started | Needs `ANTHROPIC_API_KEY`, an image provider and key, and a server host (Pages is static). Composer button is not rendered yet. |
-| 5 Berlin seeds | Not started | Needs the three before photos (GPS on) and the public-domain references. Stand-in SVG illustrations are in `components/Art.tsx`. |
+| 5 Berlin seeds | Images in, NOT approved | The image package of 15 Oct 2026 is integrated on this branch: three third-party before photos (Wikimedia Commons, 2021 to 2023), three AI after-visions, four references. Shown with credits and an "AI vision" label (see `seeds/refs/LICENSES.md`). Open: the owner's written approval of the three after-images (rule 8, table below); rule 7 (one public-domain reference per fix, see QUESTIONS.md); pins are still the published bridge coordinates, not photo GPS; `scripts/generate-seeds.ts` is not built because the visions were made outside this repo (model and prompts unknown). Stand-in SVG illustrations remain in `components/Art.tsx` as the fallback. |
 | 6 Live demo | Blocked | Needs 5, and a deploy. |
 
 ## Browser verification (2026-10-15)
@@ -26,6 +26,7 @@ Seen working:
 - Reload keeps the found list (3/3, three pins).
 - Plan check "route passes within 20 m of each pin": the routed demo path passes 3.7 m (Apothekenflügel), 0.7 m (Spree front) and 11.2 m (Bauakademie) from the pins. Computed from the router's geometry, so it still needs a re-check on the pins' real photo GPS in Phase 5.
 - After the rename to WiederCARE: a clean copy of the tracked files passes `npm ci`, lint and the build with `NEXT_PUBLIC_BASE_PATH=/WiederCARE`. At 390 x 844 the page title and HUD read "WiederCARE" (card 154 px wide, no wrapping), the map fills the screen, and the first discovery writes `wiedercare:found:v1`.
+- With the real images (390 x 844, all three fixes opened from their pins): both images in each sheet decode at full size, the captions and licence links render, there is no slider, the AI note shows, and the reveal plays the wipe between the two photos with the "AI reconstruction vision" line. No 404s under `/WiederCARE/media/` and no console errors. Not handled: the images are not preloaded, so on a slow connection the first reveal can start before they arrive.
 
 Defects found and fixed:
 1. Map collapsed to 0 px, so MapLibre drew a 300 px canvas and the map was invisible. `.map { position: fixed; inset: 0 }` lost to `.maplibregl-map { position: relative }`, which loads later. Fix: `main .map` in `app/globals.css`.
@@ -39,6 +40,21 @@ NOT verified:
 - Style warnings from OpenFreeMap's "liberty" style under MapLibre 6 (three `highway-shield` filters, missing `office` image). They do not affect the view.
 
 Note: `next dev` writes an `AGENTS.md` into the project. It is not ours; commit or delete it as you prefer. Open dev pages as `localhost`, not `127.0.0.1`: Next 16 blocks dev resources from other origins.
+
+## After-image approval (CLAUDE.md rule 8)
+
+The owner fills this in. Until a row says approved, that image must not reach `main` or the live site.
+
+| Fix | Approved? | Date | Notes |
+| --- | --- | --- | --- |
+| 1 Apothekenflügel | pending | | |
+| 2 Spree front | pending | | |
+| 3 Bauakademie | pending | | |
+
+For the review, here is what I saw comparing each vision with its archive photo by eye. This is not a survey, and the call stays with the owner.
+- Fix 1: the structure follows the 1928 photograph (stepped gable with two round openings, domed corner turret, oriel with coat of arms, balustraded wing on the right). Invented or changed: all colours, the ivy pattern, cleaner surfaces, the fence, and the two pedestrians.
+- Fix 2: it shows the partial Spree-side view of the Library of Congress photograph (conical-roofed turrets, gabled fronts, arched windows, awnings, quay with landing stage), coloured in stone and slate. It is not the Rathausbrücke angle and not the whole east side. No green-roofed tower is visible in it, and the plan's Fix 2 text names the Grüner Hut.
+- Fix 3: the geometry follows the Messbild photograph (pilaster grid, arched upper windows, balustraded parapet). The brick red and terracotta tones are interpreted. The photograph's date is unresolved (1888 or 1911), so it may show a later state than the building as completed in 1836.
 
 ## Deploy (GitHub Pages, free)
 
@@ -61,6 +77,7 @@ Tested: clean copy, `npm ci`, `npm run lint`, `npm run build` with the base path
 - Pin coordinates come from published coordinates (see the comment in `data/fixes.ts`), not Nominatim: this environment cannot call it. The demo start point is approximate; foot routing snaps it.
 - Demo path is routed at runtime via routing.openstreetmap.de (foot), with a straight-line fallback. Straight-line length is 663 m, so about 47 s at 14 m/s plus 7 s per reveal. Check the routed path by eye.
 - Routed length is 1,042 m, not 663 m: about 74 s walking plus 21 s of reveals, roughly 95 s. `DEMO_SPEED` in `lib/walk.ts` is the knob if that is too long.
+- Phase 5 differs from the plan: the before photos are third-party Commons photos (CC BY-SA), not the owner's own shots, and the after-images are AI visions colourised from archive photographs, not edits of the before photos. They share no camera position, so the sheet stacks them with credits instead of using a slider (the wipe in the reveal still runs between them). Web-sized copies live in `public/media/` (6 images, 2.1 MB in all, 160 to 470 KB each); the references are in `seeds/refs/`.
 - MapLibre's worker is served from `public/` via `setWorkerUrl` (Turbopack breaks its default URL). See Browser verification.
 - "Demo walk" clears found fixes so the demo can be rehearsed.
 - Hosting moved from Vercel to GitHub Pages (static export). The `/api/fixes` route is gone; fixes are bundled in `data/fixes.ts`.
