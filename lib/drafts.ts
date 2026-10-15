@@ -13,7 +13,7 @@ export interface Draft {
 
 export const MAX_DRAFTS = 12;
 export const MAX_DRAFT_BLOB_BYTES = 3 * 1024 * 1024;
-export const DRAFT_DATABASE_NAME = "wiedersehen-berlin:v1:drafts";
+export const DRAFT_DATABASE_NAME = "wiedercare:v1:drafts";
 const DRAFT_DATABASE_VERSION = 1;
 const DRAFT_STORE_NAME = "drafts";
 

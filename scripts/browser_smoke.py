@@ -8,7 +8,7 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / ".cache" / "qa"
 OUT.mkdir(parents=True, exist_ok=True)
-BASE = os.environ.get("BERLIN_BASE_URL", "http://127.0.0.1:4173/wiedersehen-berlin/")
+BASE = os.environ.get("BERLIN_BASE_URL", "http://127.0.0.1:4173/WiederCARE/")
 REPORT = {"url": BASE, "checks": [], "screenshots": [], "errors": [], "external_hosts": [], "mutating_requests": []}
 def passed(name):
     REPORT["checks"].append(name)
@@ -21,7 +21,9 @@ def save():
     (OUT / "browser-report.json").write_text(json.dumps(REPORT, ensure_ascii=False, indent=2))
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(executable_path="/usr/bin/chromium", headless=True,
+    # CHROMIUM_PATH overrides; otherwise a system Chromium if present, else Playwright's bundled browser.
+    chromium = os.environ.get("CHROMIUM_PATH") or ("/usr/bin/chromium" if os.path.exists("/usr/bin/chromium") else None)
+    browser = p.chromium.launch(executable_path=chromium, headless=True,
         args=["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"],
         env={**os.environ, "LIBGL_ALWAYS_SOFTWARE": "1"})
     try:
@@ -65,6 +67,12 @@ with sync_playwright() as p:
             page.locator(".collection-toggle").click()
             page.locator(".stop-list button").first.click()
             page.get_by_test_id("comparison").wait_for()
+            # The sheet opens on the approved AI vision, labelled as such; the archive views stay one tap away.
+            expect(page.get_by_role("button",name="KI-Vision",exact=True)).to_have_attribute("aria-pressed","true")
+            assert "-vision.webp" in page.locator("[data-testid=comparison] > img").get_attribute("src")
+            expect(page.get_by_test_id("comparison")).to_contain_text("KI-Rekonstruktionsvision")
+            passed("sheet opens on the approved AI vision with its label")
+            page.get_by_role("button",name="Blickwechsel",exact=True).click()
             page.locator("#comparison-range").focus()
             page.locator("#comparison-range").press("Home")
             expect(page.locator("#comparison-range")).to_have_value("0")

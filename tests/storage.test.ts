@@ -20,9 +20,9 @@ class MemoryStorage implements StorageLike {
 }
 
 test("storage keys use the versioned Berlin namespace", () => {
-  assert.equal(STORAGE_NAMESPACE, "wiedersehen-berlin:v1");
-  assert.equal(FOUND_IDS_KEY, "wiedersehen-berlin:v1:found");
-  assert.equal(SOUND_ENABLED_KEY, "wiedersehen-berlin:v1:sound");
+  assert.equal(STORAGE_NAMESPACE, "wiedercare:v1");
+  assert.equal(FOUND_IDS_KEY, "wiedercare:v1:found");
+  assert.equal(SOUND_ENABLED_KEY, "wiedercare:v1:sound");
 });
 
 test("found ID parsing validates JSON and filters invalid entries without throwing", () => {

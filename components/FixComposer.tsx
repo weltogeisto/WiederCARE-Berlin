@@ -24,8 +24,8 @@ function Thumb({ photo }: { photo: Blob }) {
 }
 function dataUrl(blob: Blob): Promise<string> { return new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(String(reader.result)); reader.onerror = () => reject(new Error("Export fehlgeschlagen.")); reader.readAsDataURL(blob); }); }
 async function downloadDraft(draft: Draft) {
- const data = { ...draft, before: await dataUrl(draft.before), after: draft.after ? await dataUrl(draft.after) : null, format: "wiedersehen-berlin-draft-v1", visibility: "local-only" };
- const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" })); const a = document.createElement("a"); a.href = url; a.download = `wiedersehen-${draft.id}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+ const data = { ...draft, before: await dataUrl(draft.before), after: draft.after ? await dataUrl(draft.after) : null, format: "wiedercare-draft-v1", visibility: "local-only" };
+ const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" })); const a = document.createElement("a"); a.href = url; a.download = `wiedercare-${draft.id}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 export default function FixComposer({ point, onClose }: { point: Point; onClose: () => void }) {
  const [before, setBefore] = useState<Blob | null>(null); const [after, setAfter] = useState<Blob | null>(null); const [title, setTitle] = useState(""); const [instruction, setInstruction] = useState(""); const [position, setPosition] = useState<Point | null>(null);

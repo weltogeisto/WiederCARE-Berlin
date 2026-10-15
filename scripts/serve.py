@@ -4,7 +4,7 @@ from pathlib import Path
 import argparse
 
 ROOT = Path(__file__).resolve().parents[1] / "out"
-BASE = "/wiedersehen-berlin"
+BASE = "/WiederCARE"
 
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):

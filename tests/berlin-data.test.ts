@@ -15,11 +15,24 @@ test("full route finds exactly three stops in order even with one huge frame per
  for (let i = 0; i < 4; i++) { const hit = findFirstEncounter(geometry.route, distance, total, geometry.stops, found); if (!hit) break; found.add(hit.fix.id); order.push(hit.fix.id); distance = hit.distance; }
  assert.deepEqual(order, ["apotheke", "spreefront", "bauakademie"]); assert.ok(total > 1000 && total < 1300);
 });
-test("all six primary and three reference images are present with complete provenance", () => {
+test("all six primary, three reference and three vision images are present with complete provenance", () => {
  let count = 0;
- for (const stop of assets.stops) for (const image of [stop.before, stop.after, ...stop.historicalReferences]) {
+ for (const stop of assets.stops) for (const image of [stop.before, stop.after, ...stop.historicalReferences, stop.vision]) {
   assert.ok(image.author && image.date && image.license && image.sourceUrl.startsWith("https://commons.wikimedia.org/wiki/File:"));
   const stat = statSync(new URL(`../${image.localPath}`, import.meta.url)); assert.ok(stat.size > 1000 && stat.size < 500000); count++;
  }
- assert.equal(assets.stops.length, 3); assert.equal(count, 9);
+ assert.equal(assets.stops.length, 3); assert.equal(count, 12);
+});
+test("every AI vision is approved, labelled as AI and records what it was made from", () => {
+ for (const stop of assets.stops) {
+  const v = stop.vision;
+  assert.equal(v.mediaType, "ai_reconstruction");
+  assert.equal(v.approvedOn, "2026-10-15");
+  assert.match(v.title, /^KI-Rekonstruktionsvision/);
+  assert.match(v.author, /^AI adaptation after /);
+  assert.ok(v.basedOn.length > 20 && v.caveat.includes("not verified"));
+  assert.notEqual(v.localPath, stop.after.localPath);
+ }
+ // The Apothekenflügel vision adapts a CC BY-SA photograph, so it must carry that licence.
+ assert.equal(assets.stops.find((s: { id: string }) => s.id === "apotheke").vision.license, "CC BY-SA 3.0 DE");
 });

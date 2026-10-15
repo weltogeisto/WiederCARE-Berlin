@@ -1,8 +1,8 @@
-# Wiedersehen Berlin
+# WiederCARE
 
 **Eine Stadt. Zwei Zeiten.** Ein kostenloser Spaziergang um das Berliner Schloss: Apothekenflügel, alte Spreefront und Schinkels Bauakademie.
 
-Built with Astra / Hermes. Original design and code; no copied application sprites or sounds.
+Original design and code; no copied application sprites or sounds.
 
 ## The free edition
 
@@ -11,9 +11,9 @@ Built with Astra / Hermes. Original design and code; no copied application sprit
 - GPS only after an explicit button press. Simulation works from anywhere.
 - Found places persist in localStorage. Photo ideas and optional user-supplied after-images stay in **IndexedDB on the device**. No upload, API key, login, tracking SDK or cloud database.
 - Photos are resized in-browser to a 1536px long edge and re-encoded to JPEG, stripping embedded EXIF. Export important drafts; clearing browser data removes them.
-- No paid AI service. **The historical images are real archive images, not AI restorations.** Perspectives and dates differ and are shown with sources in the app. The human review gate for future generated reconstructions is not bypassed.
+- No paid AI service at runtime. Contemporary and historical images are real photographs with sources. Each stop also shows one **AI reconstruction vision**, made from an archival photograph and approved by the project owner on 15 Oct 2026. It is always labelled as AI, and the archive photographs remain the record.
 
-The original brief is retained in `PLAN.md`. `EXECUTION.md` documents the user's later change to Astra + free GitHub hosting and the associated scope boundaries. Free hosting does not imply that a prompt-to-image API is free: no automatic image generation is claimed here.
+The original brief is retained in `PLAN.md`. `EXECUTION.md` documents the change to a free GitHub-hosted edition, its boundaries, and the decisions taken since. `AGENTS.md` holds the contributor rules.
 
 ## Run locally
 
@@ -22,7 +22,7 @@ Requires Node 22.18+ (CI uses Node 24).
 ```sh
 npm ci
 npm run dev
-# http://localhost:3000/wiedersehen-berlin/
+# http://127.0.0.1:3000/WiederCARE/
 ```
 
 ```sh
@@ -32,7 +32,7 @@ npm test
 npm run build
 ```
 
-Production files are emitted to `out/`. The app's base path is `/wiedersehen-berlin/`; serve the static files under that path. No server routes, secrets or build-time cloud calls are required. The Pages workflow runs only on main pushes or explicit dispatch; there are no schedules.
+Production files are emitted to `out/`. The app's base path is `/WiederCARE/`; serve the static files under that path (`python3 scripts/serve.py`). No server routes, secrets or build-time cloud calls are required. The Pages workflow runs only on main pushes or explicit dispatch; there are no schedules.
 
 ## Privacy and network
 
@@ -42,12 +42,12 @@ The walking route is approximate and based on OSM. It is not turn-by-turn naviga
 
 ## Licenses and source integrity
 
-Project-created UI, crew and audio are original. Individual photographs retain their respective public-domain/Creative Commons terms; see the per-image source manifest and `seeds/refs/LICENSES.md`. The original source app is research inspiration only, not a source of code or media. Map attribution remains visible in the UI.
+Project-created UI, crew and audio are original. Individual images retain their respective public-domain/Creative Commons terms; see `research/berlin-assets.json` and `seeds/refs/LICENSES.md`. The Apothekenflügel AI vision adapts a CC BY-SA 3.0 DE photograph and is shared under that licence. The original source app is research inspiration only, not a source of code or media. Map attribution remains visible in the UI.
 
 ## Deployment
 
-Repository: https://github.com/weltogeisto/wiedersehen-berlin
+Repository: https://github.com/weltogeisto/WiederCARE
 
-Target Pages URL: https://weltogeisto.github.io/wiedersehen-berlin/
+Target Pages URL: https://weltogeisto.github.io/WiederCARE/
 
 Standard GitHub-hosted Actions on a public repository and GitHub Pages are used, not paid runners or third-party deployment services. Hosting is subject to the providers' standard limits and terms.

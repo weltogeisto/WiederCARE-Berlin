@@ -2,7 +2,7 @@
 
 ## Processing and use
 
-- The source images below are genuine Wikimedia Commons media, not generated images. `after` assets are archival comparisons, not AI restorations.
+- Except the three AI visions in the last section, the source images below are genuine Wikimedia Commons media, not generated images. `after` assets are archival comparisons, not AI restorations.
 - The local `.webp` copies were resized to a maximum 1,400 px long edge and compressed for web delivery (each is under 500,000 bytes). No depicted content was added, removed, or retouched. EXIF was stripped; see `research/berlin-assets.json` for the source dates and unresolved metadata conflicts.
 - Commons file pages were used as the license record. Public-domain labels below reflect each Commons file page; this is not a jurisdiction-specific legal opinion.
 - Preserve attribution for CC BY / CC BY-SA assets. The `spreefront-before.webp` derivative remains CC BY-SA 4.0; the `bauakademie-before.webp` derivative remains CC BY 4.0. CC0 attribution is optional but retained here for provenance.
@@ -72,3 +72,31 @@
 - Author: Eduard Gaertner. Date: 1868. Commons marks it public domain.
 - Source: https://commons.wikimedia.org/wiki/File:Bauakademie_Schinkel_(Eduard_Gaertner).jpg
 - Label it as Gaertner's painting. It is a period visual depiction, not a photograph or an unmediated architectural survey.
+
+## AI reconstruction visions (approved 15 Oct 2026)
+
+These three images are AI adaptations of archival photographs, not photographs. They came in the image package `Berlin_Rekonstruktion_Vorher_Nachher` (15 Oct 2026), whose manifest SHA-256 values matched on unpacking. The project owner approved all three on 15 Oct 2026 for display as labelled AI visions. Colours, materials and fine details are interpreted, not verified against building surveys. The tool or model that made them is not recorded in the package.
+
+Processing for this repo: PNG converted to WebP, resized to a maximum 1,400 px long edge, metadata dropped. Each file is under 500,000 bytes.
+
+### Apothekenflügel
+- Local: `public/media/apothekenfluegel-vision.webp` — 1,079 × 1,400, 319,472 bytes.
+- Made from: *Bundesarchiv Bild 146-1998-014-21A, Berlin, Stadtschloss, Apotheken-Flügel*. Author: Bundesarchiv / August Rumbucher [junior]. Date: before 1929 (Commons metadata: 1928). Licence: CC BY-SA 3.0 DE.
+- Source: https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1998-014-21A,_Berlin,_Stadtschloss,_Apotheken-Fl%C3%BCgel.jpg
+- Supporting reference: the Schlossapotheke Zeno postcard listed above (public domain).
+- **Licence of the vision: CC BY-SA 3.0 DE** (an adaptation of a share-alike source). Credit: "AI adaptation after Bundesarchiv, Bild 146-1998-014-21A / August Rumbucher [junior]", https://creativecommons.org/licenses/by-sa/3.0/de/
+- Original in the package: `02_Nachher_Apothekenfluegel_KI_Rekonstruktionsvision.png` (SHA-256 `71a79d0c05e8859455ab0d49608aafa44dda967075bdeca2984cfb94b738d5ae`).
+
+### Schloss Spreefront
+- Local: `public/media/spreefront-vision.webp` — 1,400 × 1,004, 356,184 bytes.
+- Made from: *Rear of Imperial Castle, Berlin*. Author: Bain News Service, publisher / Library of Congress, ggbain.36469, LCCN 2014716618. Date: Commons lists 1900; the source caption data is unverified. Public domain / no known restrictions.
+- Source: https://commons.wikimedia.org/wiki/File:Rear_of_Imperial_Castle,_Berlin_LCCN2014716618.jpg
+- Shows a partial Spree-side view, not the Rathausbrücke angle and not the whole east side. No green-roofed tower (Grüner Hut) is visible; the owner approved it knowing this.
+- Original in the package: `02_Nachher_Schloss_Historische_Spreefront_KI_Rekonstruktionsvision.png` (SHA-256 `95c8ed4ed4dd0460745c49dae54c220b9933ec44163ee5a8e0fa9d7876b947bb`).
+
+### Schinkel Bauakademie
+- Local: `public/media/bauakademie-vision.webp` — 1,340 × 1,174, 273,418 bytes.
+- Made from: *M Bauakademie Berlin 1888.jpg*, the same Messbild photograph used above as the archival comparator (public domain; date 1888 or 1911, unresolved).
+- Source: https://commons.wikimedia.org/wiki/File:M_Bauakademie_Berlin_1888.jpg
+- Because the photograph's date is unresolved, the vision may show a later state than the building as completed in 1836.
+- Original in the package: `02_Nachher_Schinkelsche_Bauakademie_KI_Rekonstruktionsvision.png` (SHA-256 `af0213d44ce16ac9a902e473037079f05fab59e9dd4c1599f96a0b37a29d1090`).

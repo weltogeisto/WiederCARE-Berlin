@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "stopIds": ["apotheke", "spreefront", "bauakademie"],
-  "imageUseNotice": "All local images are genuine Wikimedia Commons source images resized and converted to WebP; no image was generated or AI-restored. The `before` image is a contemporary-site photo; `after` and `historicalReferences` are archival visual sources, not reconstructed after-images. Image processing changed format/size only; source EXIF was removed. Dates and camera perspectives are taken from Commons metadata and are caveated where conflicting or approximate.",
+  "imageUseNotice": "Contemporary (`before`), archival (`after`) and `historicalReferences` images are genuine Wikimedia Commons source images, resized and converted to WebP with EXIF removed; they were not generated or AI-restored. Each stop also has one `vision`: an AI reconstruction vision made from an archival photograph, approved by the project owner on 2026-10-15 and always shown labelled as AI with its credit. A vision is not evidence: the archival photographs remain the record. Dates and camera perspectives come from Commons metadata and are caveated where conflicting or approximate.",
   "stops": [
     {
       "id": "apotheke",
@@ -62,7 +62,25 @@
           "localDimensions": [1280, 989],
           "localBytes": 274372
         }
-      ]
+      ],
+      "vision": {
+        "localPath": "public/media/apothekenfluegel-vision.webp",
+        "title": "KI-Rekonstruktionsvision: Apothekenflügel (nach Bundesarchiv Bild 146-1998-014-21A)",
+        "author": "AI adaptation after Bundesarchiv, Bild 146-1998-014-21A / August Rumbucher [junior]",
+        "date": "Vision generated 2026-10-15; base photograph before 1929 (Commons metadata: 1928)",
+        "license": "CC BY-SA 3.0 DE",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1998-014-21A,_Berlin,_Stadtschloss,_Apotheken-Fl%C3%BCgel.jpg",
+        "basedOn": "Bundesarchiv photograph (CC BY-SA 3.0 DE; the vision is shared under the same licence). Supporting reference: Schlossapotheke Zeno postcard (public domain).",
+        "reviewNote": "Structure follows the 1928 photograph (stepped gable, domed corner turret, oriel with coat of arms); colours, ivy, surfaces, fence and pedestrians are interpreted.",
+        "mediaType": "ai_reconstruction",
+        "caveat": "AI colour restoration and interpretation of the archival photograph. Colours, materials and fine details are interpreted, not verified against building surveys. Camera position differs from the contemporary photo.",
+        "approvedBy": "project owner (Hendrik), in the build session",
+        "approvedOn": "2026-10-15",
+        "approvalNote": "Approved as an AI reconstruction vision for display with this label and credit. Not a survey-verified reconstruction.",
+        "localDimensions": [1079, 1400],
+        "localBytes": 319472
+      }
     },
     {
       "id": "spreefront",
@@ -123,7 +141,25 @@
           "localDimensions": [1053, 1400],
           "localBytes": 257314
         }
-      ]
+      ],
+      "vision": {
+        "localPath": "public/media/spreefront-vision.webp",
+        "title": "KI-Rekonstruktionsvision: Spreefront (nach Bain News Service / Library of Congress)",
+        "author": "AI adaptation after Bain News Service / Library of Congress, LCCN 2014716618",
+        "date": "Vision generated 2026-10-15; base photograph c. 1900 (Commons; caption data unverified)",
+        "license": "Base photograph public domain / no known restrictions",
+        "licenseUrl": null,
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rear_of_Imperial_Castle,_Berlin_LCCN2014716618.jpg",
+        "basedOn": "Library of Congress glass negative 'Rear of Imperial Castle, Berlin' (public domain).",
+        "reviewNote": "Partial Spree-side view, not the Rathausbrücke angle and not the whole east side. No green-roofed tower (Grüner Hut) is visible; the owner approved it knowing this.",
+        "mediaType": "ai_reconstruction",
+        "caveat": "AI colour restoration and interpretation of the archival photograph. Colours, materials and fine details are interpreted, not verified against building surveys. Camera position differs from the contemporary photo.",
+        "approvedBy": "project owner (Hendrik), in the build session",
+        "approvedOn": "2026-10-15",
+        "approvalNote": "Approved as an AI reconstruction vision for display with this label and credit. Not a survey-verified reconstruction.",
+        "localDimensions": [1400, 1004],
+        "localBytes": 356184
+      }
     },
     {
       "id": "bauakademie",
@@ -190,7 +226,25 @@
           "localDimensions": [1280, 1011],
           "localBytes": 485052
         }
-      ]
+      ],
+      "vision": {
+        "localPath": "public/media/bauakademie-vision.webp",
+        "title": "KI-Rekonstruktionsvision: Bauakademie (nach Messbildaufnahme)",
+        "author": "AI adaptation after Königlich Preußische Messbildanstalt",
+        "date": "Vision generated 2026-10-15; base photograph 1888 or 1911 (unresolved)",
+        "license": "Base photograph public domain",
+        "licenseUrl": null,
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:M_Bauakademie_Berlin_1888.jpg",
+        "basedOn": "Messbild photograph M_Bauakademie_Berlin_1888.jpg (public domain), the same archive photo this app shows as the Bauakademie comparator.",
+        "reviewNote": "Geometry follows the Messbild photograph; brick and terracotta colours are interpreted. Its date is unresolved, so it may show a later state than 1836.",
+        "mediaType": "ai_reconstruction",
+        "caveat": "AI colour restoration and interpretation of the archival photograph. Colours, materials and fine details are interpreted, not verified against building surveys. Camera position differs from the contemporary photo.",
+        "approvedBy": "project owner (Hendrik), in the build session",
+        "approvedOn": "2026-10-15",
+        "approvalNote": "Approved as an AI reconstruction vision for display with this label and credit. Not a survey-verified reconstruction.",
+        "localDimensions": [1340, 1174],
+        "localBytes": 273418
+      }
     }
   ]
 }

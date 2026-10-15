@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 const config: NextConfig = {
   output: "export",
-  basePath: "/wiedersehen-berlin",
+  basePath: "/WiederCARE",
   trailingSlash: true,
   images: { unoptimized: true },
   poweredByHeader: false,

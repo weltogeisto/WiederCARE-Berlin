@@ -1,4 +1,4 @@
-export const STORAGE_NAMESPACE = "wiedersehen-berlin:v1";
+export const STORAGE_NAMESPACE = "wiedercare:v1";
 export const FOUND_IDS_KEY = `${STORAGE_NAMESPACE}:found`;
 export const SOUND_ENABLED_KEY = `${STORAGE_NAMESPACE}:sound`;
 

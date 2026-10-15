@@ -16,16 +16,18 @@ export default function CrewReveal({ stop, onDone, sound }: { stop: Stop; onDone
   return () => { timers.forEach(clearTimeout); clearTimeout(finish); };
  }, [reduced]);
  const skip = () => { if (!done.current) { done.current = true; callback.current(); } };
+ // With an approved vision the crew rebuilds into it; otherwise into the archive photo. The label always says which.
+ const vision = stop.vision;
  return <div className={`reveal ${reduced ? "reveal-reduced" : ""}`} data-testid="crew-reveal" onClick={skip}>
-  <div className="reveal-stage" aria-label={`Archiv-Reveal: ${stop.title}`}>
+  <div className="reveal-stage" aria-label={`${vision ? "Rekonstruktions" : "Archiv"}-Reveal: ${stop.title}`}>
    <img className="reveal-photo" src={stop.before.src} alt={stop.before.title} />
-   <img className="reveal-photo reveal-after" src={stop.after.src} alt={`${stop.title}, Archivaufnahme ${stop.after.date}`} />
+   <img className="reveal-photo reveal-after" src={vision ? vision.src : stop.after.src} alt={vision ? `${stop.title}, KI-Rekonstruktionsvision nach einer Archivaufnahme` : `${stop.title}, Archivaufnahme ${stop.after.date}`} />
    <div className="scaffold" aria-hidden="true"><i/><i/><i/><b/><b/><b/></div>
    {!reduced && <div className="crew-line"><Worker index={0}/><Worker index={1}/><Worker index={2}/></div>}
-   <span className="photo-stamp">Archiv · {stop.after.date}</span>
+   <span className="photo-stamp">{vision ? "KI-Vision · nach Archivfoto" : `Archiv · ${stop.after.date}`}</span>
    <div className="reveal-scan" aria-hidden="true"/>
   </div>
-  <div className="reveal-caption"><span className="eyebrow">{reduced ? "Archivansicht" : phase}</span><button className="text-button" onClick={e => { e.stopPropagation(); skip(); }}>Überspringen <Icon name="arrow" size={16}/></button></div>
-  <p className="honesty-note">Eine echte Archivaufnahme, keine KI-Rekonstruktion. Perspektiven können abweichen.{sound ? "" : " Ton ist aus."}</p>
+  <div className="reveal-caption"><span className="eyebrow">{reduced ? (vision ? "KI-Vision" : "Archivansicht") : phase}</span><button className="text-button" onClick={e => { e.stopPropagation(); skip(); }}>Überspringen <Icon name="arrow" size={16}/></button></div>
+  <p className="honesty-note">{vision ? "KI-Rekonstruktionsvision nach einer Archivaufnahme, vom Projekt freigegeben. Farben und Details sind interpretiert, Perspektiven können abweichen." : "Eine echte Archivaufnahme, keine KI-Rekonstruktion. Perspektiven können abweichen."}{sound ? "" : " Ton ist aus."}</p>
  </div>;
 }
