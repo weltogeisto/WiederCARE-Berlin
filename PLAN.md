@@ -1,8 +1,6 @@
-> **Note added at export (not part of the Claude Doc).** `PROGRESS.md` records deviations decided after this plan was written: hosting is GitHub Pages (static export), not Vercel; no Tailwind; no `/api/fixes` route; no Supabase tables yet; the three pin coordinates come from published sources, not Nominatim; working title is "Wiederkehr". Where they conflict, `PROGRESS.md` wins for hosting and stack. This plan wins for historical facts, prompts and gates.
-
 # Fixlings Berlin — Build Plan
 
-15 Oct 2026
+Oct 15, 2026 · @Welt Geist
 
 ## The plan on one page
 
@@ -24,8 +22,8 @@ Fixlings is a mobile-first Next.js app on Vercel that fuses a geocaching loop wi
 **Observed on the live page (15 Oct 2026)**
 
 - Promise: snap a problem on your street, tell the AI how to fix it, watch a tiny crew do the job, find fixes near you.
-- Full-screen map, counter "0/0 fixes found", buttons "Demo walk", "My GPS", a sound toggle, primary action "+ Fix something".
-- Movement hint: "Tap the map to walk there · drag the blue dot".
+- Full-screen map, counter “0/0 fixes found”, buttons “Demo walk”, “My GPS”, a sound toggle, primary action “+ Fix something”.
+- Movement hint: “Tap the map to walk there · drag the blue dot”.
 - Next.js (font size-adjust meta), theme colour `#facc15` (Tailwind yellow-400), `viewport-fit=cover` for edge-to-edge phones.
 
 **Inferred (Phase 0 confirms or corrects)**
@@ -35,7 +33,7 @@ Fixlings is a mobile-first Next.js app on Vercel that fuses a geocaching loop wi
 - Three position sources: a simulated demo walk along a path, tap or drag to teleport, real GPS.
 - The crew is either a client-side sprite animation over a before-to-after reveal, or a generated video clip.
 
-**Phase 0 recon task (30-minute cap).** Open the site in Chrome DevTools and record in `FINDINGS.md`: map library and tile host; the API route hit by "+ Fix something"; AI provider domains in network traffic; whether the crew is video or DOM/canvas; the discovery radius if visible in the bundle. Do not copy code, sprites, sounds or the name. If a finding contradicts the build spec below, stop and escalate. Otherwise proceed: the Berlin build does not depend on their internals.
+**Phase 0 recon task (30-minute cap).** Open the site in Chrome DevTools and record in `FINDINGS.md`: map library and tile host; the API route hit by “+ Fix something”; AI provider domains in network traffic; whether the crew is video or DOM/canvas; the discovery radius if visible in the bundle. Do not copy code, sprites, sounds or the name. If a finding contradicts the build spec below, stop and escalate. Otherwise proceed: the Berlin build does not depend on their internals.
 
 ## Build spec
 
@@ -51,7 +49,7 @@ One Next.js app, one database, one AI call chain, zero per-fix animation cost. E
 | Crew | Client-side sprites + mask reveal + WebAudio | Deterministic, free, works on weak connections; video is a later option |
 | Discovery | Haversine distance, reveal radius 35 m, found IDs in `localStorage` | No login needed |
 
-**Image-edit provider rule.** Default candidate: Google's current Gemini image-edit model (the "Nano Banana" line). Fallback: OpenAI's current image-edit model. Phase 0 runs the same test edit on both and pins the exact model ID from the provider's docs that day. Never hard-code a model ID from memory.
+**Image-edit provider rule.** Default candidate: Google's current Gemini image-edit model (the “Nano Banana” line). Fallback: OpenAI's current image-edit model. Phase 0 runs the same test edit on both and pins the exact model ID from the provider's docs that day. Never hard-code a model ID from memory.
 
 **Data model**
 
@@ -78,7 +76,7 @@ create table fix_requests (ip_hash text not null, created_at timestamptz not nul
 
 Writes happen only server-side with the service-role key. `fix_requests` enforces 5 new fixes per IP per day.
 
-**Request flow for "+ Fix something"**
+**Request flow for “+ Fix something”**
 
 1. Camera capture via `<input type="file" accept="image/*" capture="environment">`; attach GPS position and compass heading if available.
 2. Client downsizes to 1536 px long edge, JPEG quality 0.85, posts photo + instruction to `POST /api/fix`.
@@ -129,23 +127,23 @@ Sonnet follows the plan literally and escalates instead of improvising. These ei
 Seven phases, each ending in a working preview deploy. Kept as a numbered list on purpose: Sonnet reads this file as Markdown, and a list survives the export.
 
 0. **Recon and keys.** Fill `FINDINGS.md` (see What Fixlings is). Confirm the OpenFreeMap style URL loads in MapLibre. Run one test edit per image provider: a current Berlin street photo plus one reference image. Pin `IMAGE_PROVIDER` and `IMAGE_MODEL` from the winner's docs.
-    - Gate: `FINDINGS.md` complete; both test edits saved; provider choice and reason written down.
-1. **Map shell.** Full-screen MapLibre map centred on Schlossplatz at zoom 16. HUD: counter, Demo walk, My GPS, sound toggle, "+ Fix something". Blue dot draggable; tap-to-walk animates the dot at 1.4 m/s.
-    - Gate: the dot moves by tap, drag and GPS on a phone viewport, with no visible jank.
+   - Gate: `FINDINGS.md` complete; both test edits saved; provider choice and reason written down.
+1. **Map shell.** Full-screen MapLibre map centred on Schlossplatz at zoom 16. HUD: counter, Demo walk, My GPS, sound toggle, “+ Fix something”. Blue dot draggable; tap-to-walk animates the dot at 1.4 m/s.
+   - Gate: the dot moves by tap, drag and GPS on a phone viewport, with no visible jank.
 2. **Fixes and discovery.** Create the tables, policy and bucket in Supabase (via the Supabase connector or SQL). Build `GET /api/fixes`. Markers stay hidden until the dot is within 35 m, then pop with a sound; counter shows n/N; found IDs persist in `localStorage`.
-    - Gate: three placeholder fixes are discovered in order by a test walk.
+   - Gate: three placeholder fixes are discovered in order by a test walk.
 3. **Crew reveal.** `CrewReveal` plays a 7-second sequence: crew walks in (1 s), scaffolding rises (1.5 s), a left-to-right mask wipes before into after (3.5 s), crew waves out (1 s). Tap skips; a replay button repeats. `prefers-reduced-motion` gets a plain crossfade.
-    - Gate: plays cleanly at 390 px wide; skip and replay both work.
+   - Gate: plays cleanly at 390 px wide; skip and replay both work.
 4. **Make a fix.** `FixComposer` and `POST /api/fix` end to end, with the rate limit and error states: no GPS, model refusal, 60 s timeout.
-    - Gate: a photo taken on a phone becomes a live fix within 60 s.
+   - Gate: a photo taken on a phone becomes a live fix within 60 s.
 5. **Berlin seeds.** You shoot the three before photos at the viewpoints in the Berlin section (daylight, phone held level, 1x lens). Sonnet sources the public-domain references, then `generate-seeds.ts` renders three candidates per fix. You pick one per fix or reject all; rejected fixes get re-rendered with your notes.
-    - Gate: your written approval of all three in `PROGRESS.md`; `seed.ts` inserts them with `is_seed = true`.
+   - Gate: your written approval of all three in `PROGRESS.md`; `seed.ts` inserts them with `is_seed = true`.
 6. **Live demo.** Load the demo route from the Demo walk section, deploy to production, rehearse once on a phone.
-    - Gate: one tap on Demo walk discovers all three fixes in order and every reveal plays.
+   - Gate: one tap on Demo walk discovers all three fixes in order and every reveal plays.
 
 ## The three Berlin fixes
 
-Accuracy comes from pictures, not adjectives. Each prompt states only facts verified below; every visual detail — storeys, windows, gables, colours — comes from public-domain reference images attached to the edit call. An image model asked to "imagine" a lost building invents one; asked to copy a reference, it mostly copies.
+Accuracy comes from pictures, not adjectives. Each prompt states only facts verified below; every visual detail — storeys, windows, gables, colours — comes from public-domain reference images attached to the edit call. An image model asked to “imagine” a lost building invents one; asked to copy a reference, it mostly copies.
 
 **Reference rule for Sonnet.** Use only images on Wikimedia Commons with a public-domain tag (e.g. photos taken before 1926, or creators dead for 70+ years). Log URL, author, date and licence for each in `seeds/refs/LICENSES.md`. Attach 2–4 references per fix. If fewer than two qualify, stop and escalate.
 
@@ -233,7 +231,7 @@ or add text, logos or slogans. Keep "edit" under 60 words.
 
 ## Demo walk and live script
 
-The demo is one lap around the Schloss: the walk circles the building it restores, and each fix waits where its viewpoint stands. About 0.7 km as the crow flies, roughly 50 seconds at 10× walking speed, plus a pause for each reveal.
+The demo is one lap around the Schloss: the walk circles the building it restores, and each fix waits where its viewpoint stands. Roughly 1.1 km, about 80 seconds at 10× walking speed, plus a pause for each reveal.
 
 **Route waypoints, in order**
 
@@ -256,7 +254,7 @@ The demo is one lap around the Schloss: the walk circles the building it restore
 3. Liebknechtbrücke: the crew raises the Apothekenflügel beside the palace. 1/3.
 4. Down the east bank to the Rathausbrücke: the modern east facade gives way to the Spree front and the Grüner Hut. 2/3.
 5. Across Schlossplatz and the Schleusenbrücke to Schinkelplatz: the Bauakademie grows out of its sample corner. 3/3.
-6. Close by tapping "+ Fix something" on a fresh photo, to show the mechanic is real, not canned.
+6. Close by tapping “+ Fix something” on a fresh photo, to show the mechanic is real, not canned.
 
 ## Decisions, risks, open questions
 
@@ -275,7 +273,7 @@ The biggest risk is a confidently wrong building, so the plan puts a human gate 
 | --- | --- |
 | Image model invents architecture | 2–4 references per fix, 3 candidates each, your approval before seeding |
 | Model IDs and prices change | Phase 0 pins them from provider docs on the day |
-| "Fixlings" is someone else's name and look | Own name, own sprites and sounds before any public link |
+| “Fixlings” is someone else's name and look | Own name, own sprites and sounds before any public link |
 | Abuse of open fix creation | Haiku refusal step, 5 fixes per IP per day, `pending` status if opened beyond friends |
 | Reference licensing | Public domain only, logged in `LICENSES.md` |
 

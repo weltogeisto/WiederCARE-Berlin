@@ -1,8 +1,19 @@
-node_modules
-.next
-.env*.local
+.env.local
+.env
+.env.*.local
+!.env.example
+node_modules/
+.next/
+out/
+.vercel/
 *.tsbuildinfo
-next-env.d.ts
+.DS_Store
 
-# Copied from node_modules by scripts/copy-worker.mjs
-public/maplibre-gl-worker.mjs
+# Local access diagnostics are not public project content
+FINDINGS.md
+QUESTIONS.md
+PROGRESS.md
+.cache/
+test-results/
+playwright-report/
+public/vendor/

@@ -1,5 +1,2 @@
-import App from "@/components/App";
-
-export default function Page() {
-  return <App />;
-}
+import TourApp from "../components/TourApp";
+export default function Page() { return <TourApp />; }

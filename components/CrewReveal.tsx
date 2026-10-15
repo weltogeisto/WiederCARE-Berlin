@@ -1,89 +1,31 @@
 "use client";
-import { useEffect, useRef } from "react";
-import type { Fix } from "@/data/fixes";
-import { chime, hammer } from "@/lib/sound";
-import { Art } from "./Art";
+import { useEffect, useRef, useState } from "react";
+import type { Stop } from "../lib/types";
+import Icon from "./Icon";
 
-// Timeline (ms): crew walks in 0-1000, scaffolding rises 1000-2500, wipe 2500-6000, crew leaves 6000-7000.
-const TOTAL_MS = 7000;
-
-function Figure({ x, delay }: { x: number; delay: number }) {
-  return (
-    <g transform={`translate(${x} 392)`}>
-      <rect x="-8" y="-10" width="6" height="18" fill="#1f2d3d" />
-      <rect x="2" y="-10" width="6" height="18" fill="#1f2d3d" />
-      <rect x="-10" y="-38" width="20" height="30" rx="5" fill="#2a4a6b" />
-      <rect x="-10" y="-34" width="20" height="13" rx="3" fill="#f2c94c" />
-      <rect x="-10" y="-29" width="20" height="2.5" fill="#fff" />
-      <circle cx="0" cy="-48" r="9" fill="#e0b894" />
-      <path d="M-11 -50a11 11 0 0 1 22 0z" fill="#f28c28" />
-      <rect x="-14" y="-50" width="28" height="3" rx="1.5" fill="#f28c28" />
-      <g className="arm" style={{ animationDelay: `${2.6 + delay}s` }}>
-        <rect x="8" y="-52" width="5" height="22" rx="2.5" fill="#2a4a6b" />
-        <rect x="6" y="-58" width="16" height="7" rx="1" fill="#6b7280" />
-      </g>
-    </g>
-  );
+function Worker({ index }: { index: number }) {
+ return <div className={`crew-worker worker-${index}`} aria-hidden="true"><svg viewBox="0 0 48 72"><ellipse cx="24" cy="68" rx="16" ry="3" fill="#252d2b" opacity=".16"/><g className="worker-legs" stroke="#252d2b" strokeWidth="7" strokeLinecap="round"><path d="m19 46-4 17h-5"/><path d="m29 46 4 17h5"/></g><path d="M14 28h20l3 21H11Z" fill={index === 1 ? "#476e68" : "#c26443"}/><path d="M19 29v20m10-20v20" stroke="#f1d9a2" strokeWidth="3"/><circle cx="24" cy="19" r="10" fill={index === 2 ? "#9e7156" : "#e8b792"}/><path d="M12 17a12 12 0 0 1 24 0H12Z" fill="#e2ad4f"/><path d="M9 18h30" stroke="#a77732" strokeWidth="3" strokeLinecap="round"/><path d="M13 33 5 44m30-11 8 7" stroke={index === 2 ? "#9e7156" : "#e8b792"} strokeWidth="6" strokeLinecap="round"/><g className="worker-tool"><path d="m40 31 4 18" stroke="#594936" strokeWidth="3"/><path d="m36 30 11-2" stroke="#495954" strokeWidth="5" strokeLinecap="round"/></g><circle cx="21" cy="21" r="1" fill="#252d2b"/><circle cx="28" cy="21" r="1" fill="#252d2b"/></svg></div>;
 }
-
-function Scaffold() {
-  return (
-    <svg className="scaffold" viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <g stroke="#3b4654" strokeWidth="3" strokeLinecap="round" fill="none">
-        {[40, 140, 240, 340].map((x) => (
-          <path key={x} d={`M${x} 336V90`} />
-        ))}
-        {[130, 200, 270].map((y) => (
-          <path key={y} d={`M30 ${y}H350`} />
-        ))}
-        <path d="M40 336L140 200M140 336L240 200M240 336L340 200M40 200L140 130M240 200L340 130" strokeWidth="2" />
-      </g>
-    </svg>
-  );
-}
-
-export default function CrewReveal({ fix, onDone }: { fix: Fix; onDone: () => void }) {
-  const finished = useRef(false);
-  const done = useRef(onDone);
-  done.current = onDone;
-
-  const finish = () => {
-    if (finished.current) return;
-    finished.current = true;
-    done.current();
-  };
-
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const timers: number[] = [];
-    if (reduced) {
-      timers.push(window.setTimeout(chime, 900), window.setTimeout(finish, 2200));
-    } else {
-      for (let t = 2600; t < 6000; t += 340) timers.push(window.setTimeout(hammer, t));
-      timers.push(window.setTimeout(chime, 6000), window.setTimeout(finish, TOTAL_MS));
-    }
-    return () => timers.forEach((t) => window.clearTimeout(t));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <div className="reveal" onClick={finish} role="dialog" aria-label={`Rebuilding: ${fix.title}`}>
-      <div className="reveal-stage">
-        <div className="layer"><Art src={fix.before} /></div>
-        <div className="layer reveal-after"><Art src={fix.after} /></div>
-        <div className="edge" />
-        <Scaffold />
-        <svg className="crew" viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <Figure x={96} delay={0} />
-          <Figure x={196} delay={0.12} />
-          <Figure x={296} delay={0.24} />
-        </svg>
-      </div>
-      <div className="reveal-caption">
-        <strong>{fix.title}</strong>
-        {fix.aiAfter && <small>AI reconstruction vision</small>}
-        <span>Tap to skip</span>
-      </div>
-    </div>
-  );
+export default function CrewReveal({ stop, onDone, sound }: { stop: Stop; onDone: () => void; sound: boolean }) {
+ const [reduced] = useState(() => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+ const [phase, setPhase] = useState("Die Archiv-Crew kommt …"); const done = useRef(false); const callback = useRef(onDone);
+ useEffect(() => { callback.current = onDone; }, [onDone]);
+ useEffect(() => {
+  const timers = reduced ? [] : [setTimeout(() => setPhase("Ein Gerüst für die Erinnerung."), 1000), setTimeout(() => setPhase("Wir öffnen das Fenster in die Vergangenheit."), 2500), setTimeout(() => setPhase("Willkommen zurück."), 6000)];
+  const finish = setTimeout(() => { if (!done.current) { done.current = true; callback.current(); } }, reduced ? 500 : 7000);
+  return () => { timers.forEach(clearTimeout); clearTimeout(finish); };
+ }, [reduced]);
+ const skip = () => { if (!done.current) { done.current = true; callback.current(); } };
+ return <div className={`reveal ${reduced ? "reveal-reduced" : ""}`} data-testid="crew-reveal" onClick={skip}>
+  <div className="reveal-stage" aria-label={`Archiv-Reveal: ${stop.title}`}>
+   <img className="reveal-photo" src={stop.before.src} alt={stop.before.title} />
+   <img className="reveal-photo reveal-after" src={stop.after.src} alt={`${stop.title}, Archivaufnahme ${stop.after.date}`} />
+   <div className="scaffold" aria-hidden="true"><i/><i/><i/><b/><b/><b/></div>
+   {!reduced && <div className="crew-line"><Worker index={0}/><Worker index={1}/><Worker index={2}/></div>}
+   <span className="photo-stamp">Archiv · {stop.after.date}</span>
+   <div className="reveal-scan" aria-hidden="true"/>
+  </div>
+  <div className="reveal-caption"><span className="eyebrow">{reduced ? "Archivansicht" : phase}</span><button className="text-button" onClick={e => { e.stopPropagation(); skip(); }}>Überspringen <Icon name="arrow" size={16}/></button></div>
+  <p className="honesty-note">Eine echte Archivaufnahme, keine KI-Rekonstruktion. Perspektiven können abweichen.{sound ? "" : " Ton ist aus."}</p>
+ </div>;
 }
